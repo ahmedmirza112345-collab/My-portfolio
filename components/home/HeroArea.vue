@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="hero-content wow fadeInUp text-center delay-0-2s">
-                        <h2>Bilal Ahmed Mirza</h2>
+                        <h2>Bilal Ahmed</h2>
                     </div>
                     </div>
             </div>
@@ -31,7 +31,7 @@
                     </div>
                 <div class="col-lg-6">
                     <div class="hero-image">
-                        <img src="assets/images/about/me.jpg" alt="Bilal Ahmed Mirza">
+                        <img src="assets/images/about/me.jpg" alt="Bilal Ahmed">
                     </div>
                     </div>
                 <div class="col-lg-3 pt-30">
