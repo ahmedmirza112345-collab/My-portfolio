@@ -11,37 +11,37 @@
       <div class="row">
         <div class="col-lg-8 col-md-7">
           <div class="service-item wow fadeInUp delay-0-2s">
-            <i class="ri-pen-nib-fill"></i>
+            <i class="ri-layout-masonry-fill"></i>
             <h5>01</h5>
-            <h4>Brand & Identity Design</h4>
-            <p>Crafting unique visual identities, professional logos, and print materials. I use Adobe Creative Suite (Photoshop, Illustrator, InDesign) to create brands that stand out and captivate your audience.</p>
+            <h4>UI/UX & Web Design</h4>
+            <p>Designing high-fidelity interfaces in Figma and building pixel-perfect responsive websites using WordPress & Elementor. Expert in Nordic design principles.</p>
           </div>
         </div>
 
         <div class="col-lg-4 col-md-5">
           <div class="service-item wow fadeInUp delay-0-4s">
-            <i class="ri-layout-masonry-fill"></i>
+            <i class="ri-settings-5-fill"></i>
             <h5>02</h5>
-            <h4>Web Development</h4>
-            <p>Building responsive, high-converting websites using WordPress, Elementor, and Figma.</p>
+            <h4>Operations & Automation</h4>
+            <p>Architecting workflows in GoHighLevel (GHL) to automate client onboarding and lead nurturing.</p>
           </div>
         </div>
 
         <div class="col-lg-4 col-md-5">
           <div class="service-item wow fadeInUp delay-0-6s">
-            <i class="ri-movie-fill"></i>
+            <i class="ri-pen-nib-fill"></i>
             <h5>03</h5>
-            <h4>Video Production</h4>
-            <p>Professional video editing for podcasts and social media using Premiere Pro & After Effects.</p>
+            <h4>Brand Identity</h4>
+            <p>Creating complete branding ecosystems, logos, and print assets using Photoshop & Illustrator.</p>
           </div>
         </div>
 
         <div class="col-lg-8 col-md-7">
           <div class="service-item wow fadeInUp delay-0-8s">
-            <i class="ri-settings-5-fill"></i>
+            <i class="ri-bar-chart-grouped-fill"></i>
             <h5>04</h5>
-            <h4>Business Automation</h4>
-            <p>Streamlining your operations to save time and money. I specialize in GoHighLevel automation, data scraping, and targeted lead generation strategies to grow your business on autopilot.</p>
+            <h4>Paid Ads & Lead Gen</h4>
+            <p>Driving revenue through Meta Ads, LinkedIn campaigns, and advanced data scraping/list building strategies.</p>
           </div>
         </div>
 
