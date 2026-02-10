@@ -1,6 +1,4 @@
-
 <script setup>
-
 import { ref } from 'vue';
 
 const name = ref('');
@@ -12,10 +10,7 @@ const handleSubmit = () => {
   // Add form submission logic here
   console.log('Form submitted:', { name: name.value, email: email.value, subject: subject.value, message: message.value });
 };
-
- 
 </script>
-
 
 <template>
       <section id="contact" class="contact-area">
@@ -35,28 +30,24 @@ const handleSubmit = () => {
                   <span class="circle-btn">
                     <i class="ri-map-pin-line"></i>
                   </span>
-                  <h2>our office:</h2>
-                  <p>Jurain,Dhaka Bangladesh</p>
+                  <h2>Location:</h2>
+                  <p>Lalamusa, Punjab, Pakistan</p>
                 </div>
-
 
                 <div class="single-contact wow fadeInUp" data-wow-delay=".4s">
                   <span class="circle-btn">
                     <i class="ri-headphone-line"></i>
                   </span>
-                  <h2>contact number:</h2>
-                  <p>+1234321321</p>
-                </div>
-
+                  <h2>Contact Number:</h2>
+                  <p>+92 300 1234567</p> </div>
 
                 <div class="single-contact wow fadeInUp" data-wow-delay=".6s">
                   <span class="circle-btn">
                     <i class="ri-mail-line"></i>
                   </span>
-                  <h2>Email us:</h2>
-                  <p>websitename@mail.com</p>
+                  <h2>Email Us:</h2>
+                  <p>ahmed.mirza112345@gmail.com</p>
                 </div>
-
 
                 <div class="single-contact wow fadeInUp" data-wow-delay=".6s">
                   <h2>Socials</h2>
@@ -65,7 +56,7 @@ const handleSubmit = () => {
                       <li><a target='_blank' href="https://facebook.com"><i class="ri-facebook-circle-fill"></i></a></li>
                       <li><a target='_blank' href="https://twitter.com"><i class="ri-twitter-x-line"></i></a></li>
                       <li><a target='_blank' href="https://linkedin.com"><i class="ri-linkedin-fill"></i></a></li>
-                      <li><a target='_blank' href="https://github.com/jamilrayhan10"><i class="ri-github-line"></i></a></li>
+                      <li><a target='_blank' href="https://github.com/ahmedmirza112345-collab"><i class="ri-github-line"></i></a></li>
                     </ul>
                   </div>
                 </div>
@@ -85,7 +76,7 @@ const handleSubmit = () => {
                           id="name"
                           class="form-control" 
                            v-model="name"
-                          placeholder="Steve Milner"
+                          placeholder="Your Name"
                           required
                           data-error="Please enter your Name"
                         />
@@ -101,7 +92,7 @@ const handleSubmit = () => {
                           id="email"
                           class="form-control"
                            v-model="email"
-                          placeholder="hello@websitename.com"
+                          placeholder="hello@squarestech.com"
                           required
                           data-error="Please enter your Email"
                         />
@@ -117,7 +108,7 @@ const handleSubmit = () => {
                           id="subject"
                           class="form-control"
                            v-model="subject"
-                          placeholder="Your Subject"
+                          placeholder="Project Inquiry"
                           required
                           data-error="Please enter your Subject"
                         />
@@ -134,7 +125,7 @@ const handleSubmit = () => {
                           class="form-control"
                           rows="4"
                            v-model="message"
-                          placeholder="Write Your message"
+                          placeholder="Tell me about your project..."
                           required
                           data-error="Please Write your Message"
                         ></textarea>
@@ -144,7 +135,7 @@ const handleSubmit = () => {
                     <div class="col-md-12">
                       <div class="form-group mb-0">
                         <button type="submit" class="theme-btn">
-                          Send Me Message <i class="ri-mail-line"></i>
+                          Send Message <i class="ri-mail-line"></i>
                         </button>
                         <div id="msgSubmit" class="hidden"></div>
                       </div>
