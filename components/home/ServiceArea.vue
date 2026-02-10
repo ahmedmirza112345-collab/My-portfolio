@@ -11,7 +11,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-7">
           <div class="service-item wow fadeInUp delay-0-2s">
-            <i class="ri-arrow-right-up-line"></i>
+            <i class="ri-pen-nib-fill"></i>
             <h5>01</h5>
             <h4>Brand & Identity Design</h4>
             <p>Crafting unique visual identities, professional logos, and print materials. I use Adobe Creative Suite (Photoshop, Illustrator, InDesign) to create brands that stand out and captivate your audience.</p>
@@ -20,7 +20,7 @@
 
         <div class="col-lg-4 col-md-5">
           <div class="service-item wow fadeInUp delay-0-4s">
-            <i class="ri-arrow-right-up-line"></i>
+            <i class="ri-layout-masonry-fill"></i>
             <h5>02</h5>
             <h4>Web Development</h4>
             <p>Building responsive, high-converting websites using WordPress, Elementor, and Figma.</p>
@@ -29,7 +29,7 @@
 
         <div class="col-lg-4 col-md-5">
           <div class="service-item wow fadeInUp delay-0-6s">
-            <i class="ri-arrow-right-up-line"></i>
+            <i class="ri-movie-fill"></i>
             <h5>03</h5>
             <h4>Video Production</h4>
             <p>Professional video editing for podcasts and social media using Premiere Pro & After Effects.</p>
@@ -38,7 +38,7 @@
 
         <div class="col-lg-8 col-md-7">
           <div class="service-item wow fadeInUp delay-0-8s">
-            <i class="ri-arrow-right-up-line"></i>
+            <i class="ri-settings-5-fill"></i>
             <h5>04</h5>
             <h4>Business Automation</h4>
             <p>Streamlining your operations to save time and money. I specialize in GoHighLevel automation, data scraping, and targeted lead generation strategies to grow your business on autopilot.</p>

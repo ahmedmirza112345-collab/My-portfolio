@@ -18,10 +18,9 @@ export default defineNuxtConfig({
     "bootstrap/dist/css/bootstrap.min.css",
     "~/assets/css/animate.min.css",
     "~/assets/css/font-awesome-pro.css",
-    "~/assets/css/flaticon.css",
+    // REMOVED flaticon.css
     "~/assets/css/spacing.css",
     "~/assets/css/style.css",
     "~/assets/css/responsive.css",
   ],
-  
 });
