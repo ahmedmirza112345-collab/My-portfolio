@@ -23,5 +23,5 @@ export default defineNuxtConfig({
     "~/assets/css/style.css",
     "~/assets/css/responsive.css",
   ],
-  modules: ["@nuxt/image"],
+  
 });
