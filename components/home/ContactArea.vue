@@ -6,10 +6,11 @@ const email = ref('');
 const subject = ref('');
 const message = ref('');
 const status = ref(''); 
-const loading = ref(false); // New loading state
+const loading = ref(false);
+const showSuccessPopup = ref(false); // New state for the custom popup
 
 const handleSubmit = async (e) => {
-  loading.value = true; // Start loading
+  loading.value = true;
   const myForm = e.target;
   const formData = new FormData(myForm);
 
@@ -20,24 +21,25 @@ const handleSubmit = async (e) => {
       body: new URLSearchParams(formData).toString(),
     });
     
-    // 1. Show the Popup
-    alert("Thank you! Your message has been sent successfully. We will contact you soon.");
-
-    // 2. Show the Success Text
+    // Success! Show the custom popup
     status.value = 'success';
+    showSuccessPopup.value = true;
     
-    // 3. Clear the form
+    // Clear the form
     name.value = '';
     email.value = '';
     subject.value = '';
     message.value = '';
   } catch (error) {
     status.value = 'error';
-    alert("Error: Could not send message. Please try again.");
     console.error(error);
   } finally {
-    loading.value = false; // Stop loading
+    loading.value = false;
   }
+};
+
+const closePopup = () => {
+  showSuccessPopup.value = false;
 };
 </script>
 
@@ -128,21 +130,96 @@ const handleSubmit = async (e) => {
                     </button>
                   </div>
                 </div>
-                
-                <div class="col-md-12 text-center mt-4">
-                  <div v-if="status === 'success'" class="alert alert-success" role="alert">
-                    <strong>Success!</strong> Your message has been sent. We will contact you soon.
-                  </div>
-                  <div v-if="status === 'error'" class="alert alert-danger" role="alert">
-                    <strong>Error!</strong> Something went wrong. Please try again.
-                  </div>
-                </div>
-
               </div>
             </form>
           </div>
         </div>
       </div>
     </div>
+
+    <div v-if="showSuccessPopup" class="success-modal-overlay">
+      <div class="success-modal-content animated fadeInUp">
+        <div class="icon-box">
+          <i class="ri-checkbox-circle-fill"></i>
+        </div>
+        <h3>Message Sent!</h3>
+        <p>Thank you for reaching out. I have received your message and will get back to you shortly.</p>
+        <button class="theme-btn" @click="closePopup">Close</button>
+      </div>
+    </div>
+
   </section>
 </template>
+
+<style scoped>
+/* Modal Overlay (Background) */
+.success-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85); /* Dark background */
+  backdrop-filter: blur(5px); /* Blur effect */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Modal Box */
+.success-modal-content {
+  background: #1a1a1a; /* Dark Card Color */
+  padding: 40px;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 450px;
+  width: 90%;
+  border: 1px solid #333;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Icon Style */
+.icon-box i {
+  font-size: 60px;
+  color: #28a745; /* Success Green */
+  margin-bottom: 20px;
+  display: block;
+}
+
+/* Text Styles */
+.success-modal-content h3 {
+  color: #fff;
+  font-size: 28px;
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.success-modal-content p {
+  color: #aaa;
+  font-size: 16px;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animated {
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+
+.fadeInUp {
+  animation-name: fadeInUp;
+}
+</style>
