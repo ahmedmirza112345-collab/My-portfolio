@@ -5,9 +5,11 @@ const name = ref('');
 const email = ref('');
 const subject = ref('');
 const message = ref('');
-const status = ref(''); // To show success/error messages
+const status = ref(''); 
+const loading = ref(false); // New loading state
 
 const handleSubmit = async (e) => {
+  loading.value = true; // Start loading
   const myForm = e.target;
   const formData = new FormData(myForm);
 
@@ -17,16 +19,24 @@ const handleSubmit = async (e) => {
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: new URLSearchParams(formData).toString(),
     });
-    // Success!
+    
+    // 1. Show the Popup
+    alert("Thank you! Your message has been sent successfully. We will contact you soon.");
+
+    // 2. Show the Success Text
     status.value = 'success';
+    
+    // 3. Clear the form
     name.value = '';
     email.value = '';
     subject.value = '';
     message.value = '';
   } catch (error) {
-    // Error
     status.value = 'error';
+    alert("Error: Could not send message. Please try again.");
     console.error(error);
+  } finally {
+    loading.value = false; // Stop loading
   }
 };
 </script>
@@ -70,9 +80,9 @@ const handleSubmit = async (e) => {
             </div>
           </div>
         </div> 
+
         <div class="col-lg-8">
           <div class="contact-form contact-form-area wow fadeInUp delay-0-4s">
-            
             <form 
               name="contact" 
               method="POST" 
@@ -113,13 +123,19 @@ const handleSubmit = async (e) => {
                 </div>
                 <div class="col-md-12">
                   <div class="form-group mb-0">
-                    <button type="submit" class="theme-btn">Send Message <i class="ri-mail-line"></i></button>
+                    <button type="submit" class="theme-btn" :disabled="loading">
+                      {{ loading ? 'Sending...' : 'Send Message' }} <i class="ri-mail-line" v-if="!loading"></i>
+                    </button>
                   </div>
                 </div>
                 
-                <div class="col-md-12 text-center" v-if="status">
-                  <p v-if="status === 'success'" class="input-success" style="display:block; color: green; margin-top: 10px;">We received your message! We will get back to you soon.</p>
-                  <p v-if="status === 'error'" class="input-error" style="display:block; color: red; margin-top: 10px;">Sorry, something went wrong! Please try again.</p>
+                <div class="col-md-12 text-center mt-4">
+                  <div v-if="status === 'success'" class="alert alert-success" role="alert">
+                    <strong>Success!</strong> Your message has been sent. We will contact you soon.
+                  </div>
+                  <div v-if="status === 'error'" class="alert alert-danger" role="alert">
+                    <strong>Error!</strong> Something went wrong. Please try again.
+                  </div>
                 </div>
 
               </div>
