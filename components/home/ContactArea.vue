@@ -1,92 +1,132 @@
 <script setup>
 import { ref } from 'vue';
+
 const name = ref('');
 const email = ref('');
 const subject = ref('');
 const message = ref('');
+const status = ref(''); // To show success/error messages
 
-const handleSubmit = () => {
-  console.log('Form submitted:', { name: name.value, email: email.value, subject: subject.value, message: message.value });
+const handleSubmit = async (e) => {
+  const myForm = e.target;
+  const formData = new FormData(myForm);
+
+  try {
+    await fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData).toString(),
+    });
+    // Success!
+    status.value = 'success';
+    name.value = '';
+    email.value = '';
+    subject.value = '';
+    message.value = '';
+  } catch (error) {
+    // Error
+    status.value = 'error';
+    console.error(error);
+  }
 };
 </script>
 
 <template>
-      <section id="contact" class="contact-area">
-        <div class="container">
-          <div class="row">
-            <div class="col-xl-12 col-lg-12">
-              <div class="section-title section-black-title wow fadeInUp delay-0-2s">
-                <h2>Contact Me</h2>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-4">
-              <div class="contact-content-part wow fadeInUp delay-0-2s">
-                <div class="single-contact wow fadeInUp" data-wow-delay=".2s">
-                  <span class="circle-btn"><i class="ri-map-pin-line"></i></span>
-                  <h2>Location:</h2>
-                  <p>Gujrat, Pakistan</p>
-                </div>
-                <div class="single-contact wow fadeInUp" data-wow-delay=".4s">
-                  <span class="circle-btn"><i class="ri-phone-line"></i></span>
-                  <h2>Phone:</h2>
-                  <p>0343-0584737</p>
-                </div>
-                <div class="single-contact wow fadeInUp" data-wow-delay=".6s">
-                  <span class="circle-btn"><i class="ri-mail-line"></i></span>
-                  <h2>Email:</h2>
-                  <p>mirzabilalahmed11@gmail.com</p>
-                </div>
-                <div class="single-contact wow fadeInUp" data-wow-delay=".6s">
-                  <h2>Socials</h2>
-                  <div class="about-social">
-                    <ul>
-                      <li><a target='_blank' href="https://www.behance.net/bilalahmed311"><i class="ri-behance-fill"></i></a></li>
-                      <li><a target='_blank' href="https://linkedin.com"><i class="ri-linkedin-fill"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div> 
-            <div class="col-lg-8">
-              <div class="contact-form contact-form-area wow fadeInUp delay-0-4s">
-                <form id="contactForm" class="contact-form" @submit.prevent="handleSubmit">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label htmlFor="name">Full Name</label>
-                        <input type="text" id="name" class="form-control" v-model="name" placeholder="Your Name" required />
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-group">
-                        <label htmlFor="email">Email Address</label>
-                        <input type="email" id="email" class="form-control" v-model="email" placeholder="hello@client.com" required />
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label htmlFor="subject">Subject</label>
-                        <input type="text" id="subject" class="form-control" v-model="subject" placeholder="Project Inquiry" required />
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label htmlFor="message">Your Message</label>
-                        <textarea name="message" id="message" class="form-control" rows="4" v-model="message" placeholder="Tell me about your project..." required></textarea>
-                      </div>
-                    </div>
-                    <div class="col-md-12">
-                      <div class="form-group mb-0">
-                        <button type="submit" class="theme-btn">Send Message <i class="ri-mail-line"></i></button>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </div>
+  <section id="contact" class="contact-area">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12 col-lg-12">
+          <div class="section-title section-black-title wow fadeInUp delay-0-2s">
+            <h2>Contact Me</h2>
           </div>
         </div>
-      </section>
+      </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="contact-content-part wow fadeInUp delay-0-2s">
+            <div class="single-contact wow fadeInUp" data-wow-delay=".2s">
+              <span class="circle-btn"><i class="ri-map-pin-line"></i></span>
+              <h2>Location:</h2>
+              <p>Gujrat, Pakistan</p>
+            </div>
+            <div class="single-contact wow fadeInUp" data-wow-delay=".4s">
+              <span class="circle-btn"><i class="ri-phone-line"></i></span>
+              <h2>Phone:</h2>
+              <p>0343-0584737</p>
+            </div>
+            <div class="single-contact wow fadeInUp" data-wow-delay=".6s">
+              <span class="circle-btn"><i class="ri-mail-line"></i></span>
+              <h2>Email:</h2>
+              <p>mirzabilalahmed11@gmail.com</p>
+            </div>
+            <div class="single-contact wow fadeInUp" data-wow-delay=".6s">
+              <h2>Socials</h2>
+              <div class="about-social">
+                <ul>
+                  <li><a target='_blank' href="https://www.behance.net/bilalahmed311"><i class="ri-behance-fill"></i></a></li>
+                  <li><a target='_blank' href="https://linkedin.com"><i class="ri-linkedin-fill"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div> 
+        <div class="col-lg-8">
+          <div class="contact-form contact-form-area wow fadeInUp delay-0-4s">
+            
+            <form 
+              name="contact" 
+              method="POST" 
+              data-netlify="true" 
+              data-netlify-honeypot="bot-field"
+              @submit.prevent="handleSubmit"
+              class="contact-form" 
+            >
+              <input type="hidden" name="form-name" value="contact" />
+              <p class="hidden" style="display:none">
+                <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+              </p>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label htmlFor="name">Full Name</label>
+                    <input type="text" id="name" name="name" class="form-control" v-model="name" placeholder="Your Name" required />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label htmlFor="email">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-control" v-model="email" placeholder="hello@client.com" required />
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label htmlFor="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" class="form-control" v-model="subject" placeholder="Project Inquiry" required />
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label htmlFor="message">Your Message</label>
+                    <textarea name="message" id="message" class="form-control" rows="4" v-model="message" placeholder="Tell me about your project..." required></textarea>
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group mb-0">
+                    <button type="submit" class="theme-btn">Send Message <i class="ri-mail-line"></i></button>
+                  </div>
+                </div>
+                
+                <div class="col-md-12 text-center" v-if="status">
+                  <p v-if="status === 'success'" class="input-success" style="display:block; color: green; margin-top: 10px;">We received your message! We will get back to you soon.</p>
+                  <p v-if="status === 'error'" class="input-error" style="display:block; color: red; margin-top: 10px;">Sorry, something went wrong! Please try again.</p>
+                </div>
+
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>

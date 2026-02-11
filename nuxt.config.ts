@@ -14,6 +14,7 @@ export default defineNuxtConfig({
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
     },
   },
+
   css: [
     "bootstrap/dist/css/bootstrap.min.css",
     "~/assets/css/animate.min.css",
@@ -23,5 +24,7 @@ export default defineNuxtConfig({
     "~/assets/css/style.css",
     "~/assets/css/responsive.css",
   ],
+
   modules: ["@nuxt/image"],
+  compatibilityDate: "2026-02-11",
 });
