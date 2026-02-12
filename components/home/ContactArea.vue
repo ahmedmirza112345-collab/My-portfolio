@@ -138,12 +138,12 @@ const closePopup = () => {
     </div>
 
     <div v-if="showSuccessPopup" class="success-modal-overlay">
-      <div class="success-modal-content animated fadeInUp">
+      <div class="success-modal-content">
         <div class="icon-box">
           <i class="ri-checkbox-circle-fill"></i>
         </div>
         <h3>Message Sent!</h3>
-        <p>Thank you for reaching out. I have received your message and will get back to you shortly.</p>
+        <p>Your form has been submitted and we will contact you soon.</p>
         <button class="theme-btn" @click="closePopup">Close</button>
       </div>
     </div>
@@ -221,5 +221,16 @@ const closePopup = () => {
 
 .fadeInUp {
   animation-name: fadeInUp;
+}
+
+.contact-form .theme-btn:hover {
+  background: var(--primary-color) !important;
+  color: #000 !important;
+  border-color: var(--primary-color);
+  transform: translateY(-5px);
+}
+
+.icon-box i {
+  color: var(--primary-color);
 }
 </style>
