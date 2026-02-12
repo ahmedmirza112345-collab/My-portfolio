@@ -52,7 +52,7 @@ function handleImagePopup(index) {
       <div id="smooth-content">
         <main>
           <HomeHeroArea />
-          <HomeBrandArea />
+
           <HomeAboutArea />
           <HomeServiceArea />
           <HomePortfolioArea

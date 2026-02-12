@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="hero-content wow fadeInUp text-center delay-0-2s">
-                        <h2>Bilal Ahmed Mirza</h2>
+                        <h2>Bilal Ahmed</h2>
                     </div>
                 </div>
             </div>
