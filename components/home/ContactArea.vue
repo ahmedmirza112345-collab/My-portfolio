@@ -177,6 +177,10 @@ const closePopup = () => {
   width: 90%;
   border: 1px solid #333;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  position: relative; /* Ensure it's positioned */
+  z-index: 10000; /* Ensure it's above overlay */
+  opacity: 1 !important; /* Force visibility */
+  visibility: visible !important;
 }
 
 /* Icon Style */
@@ -203,25 +207,6 @@ const closePopup = () => {
 }
 
 /* Animation */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 40px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-.animated {
-  animation-duration: 0.5s;
-  animation-fill-mode: both;
-}
-
-.fadeInUp {
-  animation-name: fadeInUp;
-}
 
 .contact-form .theme-btn:hover {
   background: var(--primary-color) !important;
