@@ -34,8 +34,7 @@ const counter_data = [
           <div class="col-lg-9 col-sm-9">
             <div class="about-content-part wow fadeInUp delay-0-2s">
               <p>
-                I’m <strong>Bilal Ahmed</strong>, a Graphic Designer and Digital Agency Owner with over <strong>4 years</strong> of experience. 
-                As the founder of <strong>Squares Tech</strong>, I bridge the gap between creative design and technical automation. 
+                I’m <strong>Bilal Ahmed</strong>, a Graphic Designer and Marketing specialist in <strong>Squares Tech</strong>, I bridge the gap between creative design and technical automation. 
                 My passion lies in helping businesses scale by creating stunning brand identities and streamlining their operations through smart automation.
               </p>
             </div>

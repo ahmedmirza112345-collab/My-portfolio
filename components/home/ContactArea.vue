@@ -139,7 +139,8 @@ const closePopup = () => {
     </div>
 
     <div v-if="showSuccessPopup" class="success-modal-overlay">
-      <div class="success-modal-content">
+      <!-- Renamed classes to avoid conflict with global animate.css/wow.js -->
+      <div class="success-modal-content popup-animated popup-fadeInUp">
         <div class="icon-box">
           <i class="ri-checkbox-circle-fill"></i>
         </div>
@@ -177,11 +178,9 @@ const closePopup = () => {
   max-width: 450px;
   width: 90%;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-  position: relative; /* Ensure it's positioned */
-  z-index: 10000; /* Ensure it's above overlay */
-  opacity: 1 !important; /* Force visibility */
-  visibility: visible !important;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  position: relative;
+  z-index: 10000;
 }
 
 /* Icon Style */
@@ -208,6 +207,25 @@ const closePopup = () => {
 }
 
 /* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.popup-animated {
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+
+.popup-fadeInUp {
+  animation-name: fadeInUp;
+}
 
 .contact-form .theme-btn:hover {
   background: var(--primary-color) !important;

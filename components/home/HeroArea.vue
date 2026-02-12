@@ -18,7 +18,7 @@
                                 <li><img class="img-fluid" src="assets/images/avatar/03.jpg" alt="client"></li>
                             </ul>
                             <div class="reviews">100+ reviews <span>(5.0 of 5)</span>
-                                <p>Trusted by clients in Norway & Pakistan.</p>
+                                <p>Trusted by clients in Different countries.</p>
                             </div>
                         </div>
                     </div>

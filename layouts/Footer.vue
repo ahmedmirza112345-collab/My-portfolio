@@ -7,7 +7,7 @@
                 <div class="col-lg-12">
                     <div class="footer-top">
                         <p> Have a project in mind?</p>
-                        <h2><a href="mailto:hello@websitename.com">let's work</a></h2>
+                        <h2><a href="mailto:mirzabilalahmed11@gmail.com">let's work</a></h2>
                     </div>
                 </div>
             </div>
