@@ -92,6 +92,7 @@ const closePopup = () => {
               data-netlify-honeypot="bot-field"
               @submit.prevent="handleSubmit"
               class="contact-form" 
+              novalidate
             >
               <input type="hidden" name="form-name" value="contact" />
               <p class="hidden" style="display:none">
@@ -159,8 +160,8 @@ const closePopup = () => {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.85); /* Dark background */
-  backdrop-filter: blur(5px); /* Blur effect */
+  background-color: rgba(0, 0, 0, 0.1); /* 10% black fade as requested */
+  backdrop-filter: blur(2px); /* Slight blur for aesthetic */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -175,8 +176,8 @@ const closePopup = () => {
   text-align: center;
   max-width: 450px;
   width: 90%;
-  border: 1px solid #333;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
   position: relative; /* Ensure it's positioned */
   z-index: 10000; /* Ensure it's above overlay */
   opacity: 1 !important; /* Force visibility */
