@@ -30,7 +30,7 @@
                 
                 <div class="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                   <div class="skill-item wow fadeInUp delay-0-4s">
-                    <img src="https://www.svgrepo.com/show/353685/elementor.svg" alt="Elementor" class="official-icon" />
+                    <img src="https://cdn.simpleicons.org/elementor/92003B" alt="Elementor" class="official-icon" />
                     <h5>Elementor</h5>
                   </div>
                 </div>
@@ -58,7 +58,7 @@
                 
                 <div class="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                   <div class="skill-item wow fadeInUp delay-0-4s">
-                    <img src="https://avatars.githubusercontent.com/u/55125324?s=200&v=4" alt="GoHighLevel" class="official-icon" style="border-radius: 12px;" />
+                    <img src="https://www.google.com/s2/favicons?domain=gohighlevel.com&sz=128" alt="GoHighLevel" class="official-icon" style="border-radius: 12px;" />
                     <h5>GoHighLevel</h5>
                   </div>
                 </div>
