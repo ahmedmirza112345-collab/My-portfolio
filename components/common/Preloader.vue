@@ -63,7 +63,7 @@ onMounted(() => {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0f0f0f; /* Deep dark base */
+  background-color: #F4F3ED; /* Deep dark base */
   overflow: hidden;
 }
 
@@ -91,7 +91,7 @@ onMounted(() => {
 .counter-wrap {
   display: flex;
   align-items: baseline;
-  color: #fff;
+  color: #000000;
   margin-bottom: 20px;
 }
 
@@ -106,7 +106,7 @@ onMounted(() => {
 .counter-percent {
   font-size: 35px;
   font-weight: 600;
-  color: #28a745; /* Your theme's green */
+  color: #ff002b; /* Your theme's green */
   margin-left: 5px;
 }
 
@@ -122,7 +122,7 @@ onMounted(() => {
 
 .progress-fill {
   height: 100%;
-  background-color: #28a745;
+  background-color: #ff0000b1;
   transition: width 0.05s linear; /* Snappy width updates */
 }
 
