@@ -1,6 +1,7 @@
-
 <template>
-  <NuxtLayout>
+  <div>
+    <CommonPreloader />
+    
     <NuxtPage />
-  </NuxtLayout>
+  </div>
 </template>
