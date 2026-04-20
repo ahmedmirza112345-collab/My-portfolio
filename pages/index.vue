@@ -60,7 +60,7 @@ function handleImagePopup(index) {
             :portfolio_data="portfolio_data"
             :handleImagePopup="handleImagePopup"
           />
-          <HomeTestimonoalArea />
+          <!-- <HomeTestimonoalArea /> -->
           <HomeBlogArea />
           <HomeContactArea />
         </main>

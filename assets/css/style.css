@@ -48,7 +48,7 @@ Version      : 1.0
     --border-color: rgba(255, 255, 255, 0.0784313725);
     --button-border: rgba(119, 119, 125, .2);
     --body-background: #000;
-    --body-color: rgb(119, 119, 125); 
+    --body-color: rgb(119, 119, 125);
     --grey-bg: #E6EAEE;
     --text-font: "Poppins", sans-serif;
     --title-font: "Oswald", sans-serif;
@@ -164,7 +164,8 @@ a:visited {
     outline: none;
 
 }
-a:hover{
+
+a:hover {
     color: #000;
 
 }
@@ -399,11 +400,13 @@ html {
     font-size: 60px;
     line-height: 70px;
     text-transform: uppercase;
-    padding-bottom: 20px; 
+    padding-bottom: 20px;
 }
-.rk_style h2{
+
+.rk_style h2 {
     color: #FFFFFF !important;
 }
+
 .section-title p {
     font-size: 16px;
     text-transform: uppercase;
@@ -465,6 +468,7 @@ html {
     transition: .3s;
     background: transparent;
 }
+
 .theme-btn-two:hover {
     border: 1px solid var(--body-color);
     text-decoration: none;
@@ -2328,12 +2332,14 @@ ul.extra-skills li i {
     padding-bottom: 100px;
     background: var(--primary-color);
 }
+
 .contact-form-area {
     padding: 50px 30px 20px 40px;
     border-radius: 10px;
     border: 1px solid var(--border-color);
-        background: var(--lighter-color);
+    background: var(--lighter-color);
 }
+
 .contact-form-area .form-group {
     margin-bottom: 32px;
 }
@@ -2359,7 +2365,7 @@ ul.extra-skills li i {
     font-family: var(--text-font);
 }
 
-.contact-form-area .form-group input[type=text]{
+.contact-form-area .form-group input[type=text] {
     color: #070707 !important;
 }
 
@@ -2420,8 +2426,8 @@ ul.extra-skills li i {
     padding-bottom: 20px;
 }
 
-.single-contact p{
-     color: rgb(119, 119, 125);
+.single-contact p {
+    color: rgb(119, 119, 125);
 }
 
 
@@ -2441,7 +2447,7 @@ ul.extra-skills li i {
     padding: 50px 30px 20px 40px;
     border-radius: 10px;
     border: 1px solid var(--border-color);
-        background: var(--lighter-color);
+    background: var(--lighter-color);
 }
 
 .contact-page-content h6 {
@@ -2547,11 +2553,12 @@ p.copy-right-text {
     text-align: center;
 }
 
-.footer-top{
-padding-top: 100px;
- padding-bottom: 100px;
+.footer-top {
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
-.footer-top p{
+
+.footer-top p {
 
     color: #070707 !important;
     font-size: 20px;
@@ -3462,10 +3469,10 @@ ul.blog_pagination li a:hover {
 .scroller[data-animated="true"] {
     overflow: hidden;
     -webkit-mask: -webkit-linear-gradient(left,
-        transparent,
-        white 20%,
-        white 80%,
-        transparent);
+            transparent,
+            white 20%,
+            white 80%,
+            transparent);
     mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
 }
 
@@ -3511,53 +3518,54 @@ ul.blog_pagination li a:hover {
 
 
 /* video css */
- 
+
 .video-overlay {
-  position: fixed;
-  z-index: -1;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: #000000cc;
-  opacity: 0;
-  transition: all ease 500ms;
-  visibility: hidden;
+    position: fixed;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #000000cc;
+    opacity: 0;
+    transition: all ease 500ms;
+    visibility: hidden;
 }
+
 .video-overlay-close {
-  position: absolute;
-  z-index: 1000;
-  top: 15px;
-  right: 20px;
-  font-size: 36px;
-  line-height: 1;
-  font-weight: 400;
-  color: #fff;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 200ms;
+    position: absolute;
+    z-index: 1000;
+    top: 15px;
+    right: 20px;
+    font-size: 36px;
+    line-height: 1;
+    font-weight: 400;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 200ms;
 }
 
 .video-overlay.open {
-  position: fixed;
-  z-index: 9999;
-  opacity: 1;
-  visibility: visible;
-  cursor: pointer;
+    position: fixed;
+    z-index: 9999;
+    opacity: 1;
+    visibility: visible;
+    cursor: pointer;
 }
 
 .video-overlay iframe {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%); 
-  z-index: 1000;
-  width: 80%;
-  height: 80%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    z-index: 1000;
+    width: 80%;
+    height: 80%;
 }
 
 
-a{
+a {
     text-decoration: none !important;
-    
+
 }

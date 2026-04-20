@@ -26,21 +26,13 @@ portfolio_data: {
                 <!-- START SINGLE PORTFOLIO DESIGN AREA -->
 
                 <div v-for="(item, i) in portfolio_data" :key="i" :class="`col-md-6 col-xl-${item.col} portfolio-item category-1`">
-                    <a 
-                    style="cursor: pointer"
-                    @click.prevent="handleImagePopup(i)"
-                     class="work-popup">
+                    <NuxtLink to="/single-project" class="work-popup">
                         <div class="portfolio-box">
                             <!-- Image -->
                             <img :src="item.image" alt="" data-rjs="2">
-                            <!-- Category -->
-                            <span class="portfolio-category">{{ item.category }}</span>
-                            <!-- Caption -->
-                            <div class="portfolio-caption">
-                                <h1>{{ item.title }}</h1>
-                            </div>
+                            <!-- Hover text removed as requested -->
                         </div>
-                    </a>
+                    </NuxtLink>
                 </div> 
             </div>
         </div>

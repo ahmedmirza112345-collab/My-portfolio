@@ -84,7 +84,7 @@ const closePopup = () => {
         </div> 
 
         <div class="col-lg-8">
-          <div class="contact-form contact-form-area wow fadeInUp delay-0-4s">
+          <div class="contact-form contact-form-area wow fadeInUp delay-0-4s" style="position: relative;">
             <form 
               name="contact" 
               method="POST" 
@@ -133,20 +133,19 @@ const closePopup = () => {
                 </div>
               </div>
             </form>
+              <div v-if="showSuccessPopup" class="success-modal-overlay">
+                <div class="success-modal-content popup-animated popup-fadeInUp">
+                  <div class="icon-box">
+                    <i class="ri-checkbox-circle-fill"></i>
+                  </div>
+                  <h3>Message Sent!</h3>
+                  <p>Your form has been submitted and we will contact you soon.</p>
+                  <button class="theme-btn" @click="closePopup">Close</button>
+                </div>
+              </div>
+
           </div>
         </div>
-      </div>
-    </div>
-
-    <div v-if="showSuccessPopup" class="success-modal-overlay">
-      <!-- Renamed classes to avoid conflict with global animate.css/wow.js -->
-      <div class="success-modal-content popup-animated popup-fadeInUp">
-        <div class="icon-box">
-          <i class="ri-checkbox-circle-fill"></i>
-        </div>
-        <h3>Message Sent!</h3>
-        <p>Your form has been submitted and we will contact you soon.</p>
-        <button class="theme-btn" @click="closePopup">Close</button>
       </div>
     </div>
 
@@ -156,7 +155,7 @@ const closePopup = () => {
 <style scoped>
 /* Modal Overlay (Background) */
 .success-modal-overlay {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
