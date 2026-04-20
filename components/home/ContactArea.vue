@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue';
+import { MapPin, Phone, Mail, Linkedin, Palette, CheckCircle2 } from 'lucide-vue-next';
 
 const name = ref('');
 const email = ref('');
@@ -57,17 +58,17 @@ const closePopup = () => {
         <div class="col-lg-4">
           <div class="contact-content-part wow fadeInUp delay-0-2s">
             <div class="single-contact wow fadeInUp" data-wow-delay=".2s">
-              <span class="circle-btn"><i class="ri-map-pin-line"></i></span>
+              <span class="circle-btn"><MapPin :size="20" /></span>
               <h2>Location:</h2>
               <p>Gujrat, Pakistan</p>
             </div>
             <div class="single-contact wow fadeInUp" data-wow-delay=".4s">
-              <span class="circle-btn"><i class="ri-phone-line"></i></span>
+              <span class="circle-btn"><Phone :size="20" /></span>
               <h2>Phone:</h2>
               <p>0343-0584737</p>
             </div>
             <div class="single-contact wow fadeInUp" data-wow-delay=".6s">
-              <span class="circle-btn"><i class="ri-mail-line"></i></span>
+              <span class="circle-btn"><Mail :size="20" /></span>
               <h2>Email:</h2>
               <p>mirzabilalahmed11@gmail.com</p>
             </div>
@@ -75,8 +76,8 @@ const closePopup = () => {
               <h2>Socials</h2>
               <div class="about-social">
                 <ul>
-                  <li><a target='_blank' href="https://www.behance.net/bilalahmed311"><i class="ri-behance-fill"></i></a></li>
-                  <li><a target='_blank' href="https://linkedin.com"><i class="ri-linkedin-fill"></i></a></li>
+                  <li><a target='_blank' href="https://www.behance.net/bilalahmed311"><Palette :size="20" /></a></li>
+                  <li><a target='_blank' href="https://linkedin.com"><Linkedin :size="20" /></a></li>
                 </ul>
               </div>
             </div>
@@ -127,7 +128,8 @@ const closePopup = () => {
                 <div class="col-md-12">
                   <div class="form-group mb-0">
                     <button type="submit" class="theme-btn" :disabled="loading">
-                      {{ loading ? 'Sending...' : 'Send Message' }} <i class="ri-mail-line" v-if="!loading"></i>
+                      {{ loading ? 'Sending...' : 'Send Message' }} 
+                      <Mail :size="18" v-if="!loading" style="display:inline-block; margin-left: 5px; vertical-align: middle;" />
                     </button>
                   </div>
                 </div>
@@ -136,7 +138,7 @@ const closePopup = () => {
               <div v-if="showSuccessPopup" class="success-modal-overlay">
                 <div class="success-modal-content popup-animated popup-fadeInUp">
                   <div class="icon-box">
-                    <i class="ri-checkbox-circle-fill"></i>
+                    <CheckCircle2 :size="60" />
                   </div>
                   <h3>Message Sent!</h3>
                   <p>Your form has been submitted and we will contact you soon.</p>
@@ -183,11 +185,10 @@ const closePopup = () => {
 }
 
 /* Icon Style */
-.icon-box i {
-  font-size: 60px;
-  color: #28a745; /* Success Green */
-  margin-bottom: 20px;
+.icon-box svg {
+  margin: 0 auto 20px;
   display: block;
+  color: var(--primary-color, #28a745);
 }
 
 /* Text Styles */
@@ -233,7 +234,9 @@ const closePopup = () => {
   transform: translateY(-5px);
 }
 
-.icon-box i {
-  color: var(--primary-color);
+.circle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

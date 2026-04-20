@@ -47,7 +47,6 @@ function handleImagePopup(index) {
 
 <template>
   <div>
-    <Header />
     <div id="smooth-wrapper">
       <div id="smooth-content">
         <main>

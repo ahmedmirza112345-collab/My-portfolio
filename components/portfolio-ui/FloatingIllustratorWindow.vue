@@ -1,5 +1,6 @@
 <script setup>
 import { ref, reactive, computed, onUnmounted } from 'vue';
+import { Layout, Maximize2, X, Minus, Square } from 'lucide-vue-next';
 import IllustratorLayout from './IllustratorLayout.vue';
 
 const { isOpen, isMinimized, closeWindow, minimizeWindow, restoreWindow } = useIllustratorWindow();
@@ -100,13 +101,13 @@ onUnmounted(() => {
       <Transition name="mini">
         <div v-if="isMinimized" class="mini-thumb">
           <div class="mini-titlebar">
-            <i class="ri-artboard-line" style="color:#ff5722; font-size:13px;"></i>
+            <Layout :size="14" color="currentColor" :stroke-width="2" style="color:#ff5722;" />
             <span class="mini-title">Portfolio Design.ai</span>
             <button class="mini-btn" @click.stop="restoreWindow" title="Restore">
-              <i class="ri-fullscreen-line"></i>
+              <Maximize2 :size="13" color="currentColor" :stroke-width="2" />
             </button>
             <button class="mini-btn close" @click.stop="closeWindow" title="Close">
-              <i class="ri-close-line"></i>
+              <X :size="13" color="currentColor" :stroke-width="2" />
             </button>
           </div>
           <div class="mini-preview" @click="restoreWindow">
@@ -139,22 +140,21 @@ onUnmounted(() => {
           <!-- Windows-style title bar (DRAG HANDLE) -->
           <div class="win-titlebar" @mousedown="initDrag" @dblclick="handleToggleMaximize">
             <div class="win-title-left">
-              <i class="ri-artboard-line" style="color:#ff5722; font-size:14px;"></i>
+              <Layout :size="16" color="currentColor" :stroke-width="2" style="color:#ff5722;" />
               <span class="win-title-text">Portfolio Design.ai — Adobe Illustrator</span>
             </div>
             <div class="win-controls">
               <!-- Minimize -->
               <button class="wc wc-min" @click.stop="minimizeWindow" title="Minimize">
-                <span>&#x2013;</span>
+                <Minus :size="16" color="currentColor" :stroke-width="2" />
               </button>
               <!-- Maximize / Restore -->
               <button class="wc wc-max" @click.stop="handleToggleMaximize" :title="isMaximized ? 'Restore' : 'Maximize'">
-                <span v-if="isMaximized">&#x2750;</span>
-                <span v-else>&#x25A1;</span>
+                <Square :size="14" color="currentColor" :stroke-width="2" />
               </button>
               <!-- Close -->
               <button class="wc wc-close" @click.stop="closeWindow" title="Close">
-                <span>&#x2715;</span>
+                <X :size="16" color="currentColor" :stroke-width="2" />
               </button>
             </div>
           </div>

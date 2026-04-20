@@ -27,5 +27,8 @@ export default defineNuxtConfig({
   ],
 
   modules: ["@nuxt/image"],
+  build: {
+    transpile: ["lucide-vue-next"]
+  },
   compatibilityDate: "2026-02-11",
 });
