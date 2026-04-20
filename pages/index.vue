@@ -75,6 +75,9 @@ function handleImagePopup(index) {
 
     <CommonScrollToTop />
     <CommonCursorBall />
+
+    <!-- Floating Illustrator window (lives here, over the site) -->
+    <PortfolioUiFloatingIllustratorWindow />
   </div>
 </template>
 

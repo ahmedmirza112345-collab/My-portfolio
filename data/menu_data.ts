@@ -42,6 +42,12 @@ const menu_data: DataType[] = [
         has_dropdown: false,
     },
     {
+        id: 8,
+        title: "Illustrator View",
+        link: "/illustrator-portfolio",
+        has_dropdown: false,
+    },
+    {
         id: 5,
         title: "Blog",
         link: "/blog",

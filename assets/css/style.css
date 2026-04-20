@@ -3567,5 +3567,35 @@ ul.blog_pagination li a:hover {
 
 a {
     text-decoration: none !important;
-
 }
+
+/* ── Illustrator minimized taskbar ─────────────────────────── */
+.illustrator-taskbar {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(20, 20, 20, 0.95);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(12px);
+    border-radius: 10px;
+    padding: 10px 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.illustrator-taskbar:hover {
+    transform: translateX(-50%) translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+}
+.illustrator-taskbar i { font-size: 18px; color: #ff5722; }
+
+.taskbar-enter-active, .taskbar-leave-active { transition: all 0.3s ease; }
+.taskbar-enter-from, .taskbar-leave-to { opacity: 0; transform: translateX(-50%) translateY(20px); }
