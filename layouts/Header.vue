@@ -39,14 +39,7 @@ import menu_data from "../data/menu_data"
             <div class="container">
                 <div class="header-inner">
                     <div class="row align-items-center">
-                        <div class="col-xl-2 col-lg-2 col-md-6 col-6 col-sm-3">
-                            <div class="logo-area">
-                                <div class="logo">
-                                    <NuxtLink to="/"><img src="assets/images/logo.png" alt=""></NuxtLink>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-10 col-lg-10 col-md-6 col-6 col-sm-9">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-12 col-sm-12">
                             <div class="main-menu d-none d-lg-block">
                                 <nav id="mobile-menu">
                                     <ul>

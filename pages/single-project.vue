@@ -33,7 +33,7 @@ import Foote from "~/layouts/Footer.vue";
 import Breadcrumb from "~/components/common/Breadcrumb.vue";
 
 useHead({
-  title: "Single Project Nino - Modern Portfolio Nuxt js Template",
+  title: "Single Project - Modern Portfolio Nuxt js Template",
 });
 
 

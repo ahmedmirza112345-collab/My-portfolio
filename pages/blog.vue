@@ -30,7 +30,7 @@ import Foote from "~/layouts/Footer.vue";
 import Breadcrumb from "~/components/common/Breadcrumb.vue";
 
 useHead({
-  title: "Blog Nino - Modern Portfolio Nuxt js Template",
+  title: "Blog - Modern Portfolio Nuxt js Template",
 });
 
 

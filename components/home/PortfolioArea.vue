@@ -17,7 +17,7 @@ portfolio_data: {
 </script>
 
 <template>
-    <div class="projects-area" id="portfolio">
+    <div class="projects-area" id="projects">
         <div class="custom-icon">
             <img src="assets/images/custom/work-scribble.svg" alt="custom">
         </div>

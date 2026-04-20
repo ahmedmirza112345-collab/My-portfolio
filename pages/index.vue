@@ -30,7 +30,7 @@ import Footer from "~/layouts/Footer.vue";
 import portfolio_data from "~/data/portfolio_data";
 
 useHead({
-  title: "Nino - Modern Portfolio Nuxt js Template",
+  title: "Modern Portfolio Nuxt js Template",
 });
 
 
@@ -52,8 +52,9 @@ function handleImagePopup(index) {
       <div id="smooth-content">
         <main>
           <HomeHeroArea />
-
           <HomeAboutArea />
+          <AboutResumeArea />
+          <AboutSkillArea />
           <HomeServiceArea />
           <HomePortfolioArea
             :portfolio_data="portfolio_data"

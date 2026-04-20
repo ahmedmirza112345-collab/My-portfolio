@@ -14,37 +14,37 @@ const menu_data: DataType[] = [
     {
         id: 1,
         title: "Home",
-        link: "/",
+        link: "#",
         has_dropdown: false,
     },
     {
         id: 2,
         title: "About",
-        link: "/about",
+        link: "#about",
         has_dropdown: false,
     },
     {
         id: 3,
         title: "Services",
-        link: "/service",
+        link: "#services",
         has_dropdown: false,
     },
     {
         id: 4,
         title: "Projects",
-        link: "/projects",
+        link: "#projects",
         has_dropdown: false,
     },
     {
         id: 5,
         title: "Blog",
-        link: "/blog",
+        link: "#blog",
         has_dropdown: false,
     },
     {
         id: 6,
         title: "Contact",
-        link: "/contact",
+        link: "#contact",
         has_dropdown: false,
     },
 ];

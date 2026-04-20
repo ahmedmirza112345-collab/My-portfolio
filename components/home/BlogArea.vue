@@ -1,7 +1,7 @@
 
 
 <template>
-  <section class="blog-area">
+  <section class="blog-area" id="blog">
         <div class="container">
           <div class="row">
             <div class="col-xl-12 col-lg-12">

@@ -31,7 +31,7 @@
                 <div class="col-lg-3 pt-30">
                     <div class="hero-content wow fadeInUp delay-0-4s">
                         <p>I am a <strong>Creative Lead</strong> & <strong>Operations Manager</strong>. I bridge the gap between creative vision, technical execution, and business growth for companies like Techspace & Squarestech.</p>
-                        <NuxtLink class="theme-btn" to="/contact">Get In touch</NuxtLink>
+                        <NuxtLink class="theme-btn" to="#contact">Get In touch</NuxtLink>
                     </div>
                 </div>
             </div>
