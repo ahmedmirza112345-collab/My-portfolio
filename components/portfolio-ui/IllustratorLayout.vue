@@ -1,16 +1,25 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted, markRaw } from 'vue';
+import { useRouter } from 'vue-router';
+
 import { 
   Home, Layout, ChevronDown, ChevronsLeft, MousePointer2, Pointer, 
   PenTool, Feather, Square, Brush, Type, RotateCw, Move, Shapes, 
   Pipette, Search, Hand, ArrowLeftRight, X, Minus, Plus, 
   ChevronLeft, ChevronRight, ChevronsRight, AlignJustify, Menu, Eye, 
-  Copy, Palette, Layers, Wind, LayoutGrid, Paintbrush, PanelRight
+  Copy, Palette, Layers, Wind, LayoutGrid, Paintbrush, PanelRight, HelpCircle,
+  Wand2, Scissors, Pen, Type as TypeIcon, MinusSquare, Eraser, 
+  RefreshCw, Maximize, Circle, Grab, BarChart2, Crop, ScreenShare,
+  Minimize2, MoreHorizontal, Settings2, Info, List, History, 
+  Library, SwatchBook, MousePointer, Image as ImageIcon
 } from 'lucide-vue-next';
 import IllustratorCanvas from './IllustratorCanvas.vue';
+import PortfolioTour from './PortfolioTour.vue';
 
 // ─── Menu ────────────────────────────────────────────────────────────────────
+const router = useRouter();
 const activeMenu = ref(null);
+const menus = ['File', 'Edit', 'Object', 'Type', 'Select', 'Effect', 'View', 'Window', 'Help'];
 const toggleMenu = (menuName) => {
   activeMenu.value = activeMenu.value === menuName ? null : menuName;
 };
@@ -26,92 +35,182 @@ const togglePanels = () => {
 
 // ─── Tools ───────────────────────────────────────────────────────────────────
 const activeTool = ref('selection');
+const lastTool = ref('selection');
 const tools = [
-  { id: 'selection',        icon: markRaw(MousePointer2) },
-  { id: 'direct-selection', icon: markRaw(Pointer) },
-  { id: 'pen',              icon: markRaw(PenTool) },
-  { id: 'curvature',        icon: markRaw(Feather) },
-  { id: 'rectangle',        icon: markRaw(Square) },
-  { id: 'paintbrush',       icon: markRaw(Brush) },
-  { id: 'type',             icon: markRaw(Type) },
-  { id: 'rotate',           icon: markRaw(RotateCw) },
-  { id: 'scale',            icon: markRaw(Move) },
-  { id: 'shape-builder',    icon: markRaw(Shapes) },
-  { id: 'gradient',         icon: markRaw(Paintbrush) },
-  { id: 'eyedropper',       icon: markRaw(Pipette) },
-  { id: 'blend',            icon: markRaw(Wind) },
-  { id: 'artboard',         icon: markRaw(LayoutGrid) },
-  { id: 'zoom',             icon: markRaw(Search) },
-  { id: 'hand',             icon: markRaw(Hand) },
+  { id: 'selection',        icon: markRaw(MousePointer2), key: 'v' },
+  { id: 'direct-selection', icon: markRaw(Pointer),        key: 'a' },
+  { id: 'wand',             icon: markRaw(Wand2),          key: 'y' },
+  { id: 'lasso',            icon: markRaw(Scissors),       key: 'q' },
+  { id: 'pen',              icon: markRaw(PenTool),        key: 'p' },
+  { id: 'curvature',        icon: markRaw(Feather),        key: 'shift+~' },
+  { id: 'type',             icon: markRaw(TypeIcon),       key: 't' },
+  { id: 'line',             icon: markRaw(MinusSquare),    key: '\\' },
+  { id: 'rectangle',        icon: markRaw(Square),         key: 'm' },
+  { id: 'paintbrush',       icon: markRaw(Brush),          key: 'b' },
+  { id: 'shaper',           icon: markRaw(Pen),            key: 'shift+n' },
+  { id: 'eraser',           icon: markRaw(Eraser),         key: 'shift+e' },
+  { id: 'rotate',           icon: markRaw(RefreshCw),      key: 'r' },
+  { id: 'scale',            icon: markRaw(Maximize),       key: 's' },
+  { id: 'width',            icon: markRaw(Wind),           key: 'shift+w' },
+  { id: 'transform',        icon: markRaw(Move),           key: 'e' },
+  { id: 'shape-builder',    icon: markRaw(Shapes),         key: 'shift+m' },
+  { id: 'perspective',      icon: markRaw(LayoutGrid),     key: 'shift+p' },
+  { id: 'mesh',             icon: markRaw(Circle),         key: 'u' },
+  { id: 'gradient',         icon: markRaw(Paintbrush),     key: 'g' },
+  { id: 'eyedropper',       icon: markRaw(Pipette),        key: 'i' },
+  { id: 'blend',            icon: markRaw(Grab),           key: 'w' },
+  { id: 'sprayer',          icon: markRaw(MoreHorizontal), key: 'shift+s' },
+  { id: 'graph',            icon: markRaw(BarChart2),      key: 'j' },
+  { id: 'artboard',         icon: markRaw(Layout),         key: 'shift+o' },
+  { id: 'slice',            icon: markRaw(Crop),           key: 'shift+k' },
+  { id: 'hand',             icon: markRaw(Hand),           key: 'h' },
+  { id: 'zoom',             icon: markRaw(Search),         key: 'z' },
 ];
 
-// ─── Zoom ────────────────────────────────────────────────────────────────────
-const zoom = ref(1);
-const zoomPercent = computed(() => Math.round(zoom.value * 100));
-const clampZoom = (val) => Math.min(5, Math.max(0.1, val));
-const zoomIn  = () => { zoom.value = clampZoom(parseFloat((zoom.value + 0.1).toFixed(2))); };
-const zoomOut = () => { zoom.value = clampZoom(parseFloat((zoom.value - 0.1).toFixed(2))); };
-const resetZoom = () => { zoom.value = 1; };
-
-const handleWheel = (e) => {
-  if (!e.ctrlKey) return;
-  e.preventDefault();
-  const delta = e.deltaY > 0 ? -0.1 : 0.1;
-  zoom.value = clampZoom(parseFloat((zoom.value + delta).toFixed(2)));
+// ─── Right Panels ────────────────────────────────────────────────────────────
+const expandedPanels = ref(['properties', 'layers']);
+const togglePanel = (id) => {
+  if (expandedPanels.value.includes(id)) {
+    expandedPanels.value = expandedPanels.value.filter(p => p !== id);
+  } else {
+    expandedPanels.value.push(id);
+  }
 };
 
+// ─── Zoom & Pan State ────────────────────────────────────────────────────────
+const zoom = ref(1);
+const panX = ref(0);
+const panY = ref(0);
+const zoomPercent = computed(() => Math.round(zoom.value * 100));
+const clampZoom = (val) => Math.min(6, Math.max(0.05, val));
+const zoomIn  = () => { zoom.value = clampZoom(parseFloat((zoom.value * 1.2).toFixed(2))); };
+const zoomOut = () => { zoom.value = clampZoom(parseFloat((zoom.value / 1.2).toFixed(2))); };
+const resetZoom = () => { zoom.value = 1; panX.value = 0; panY.value = 0; };
+
+// ─── Modifier Keys State ─────────────────────────────────────────────────────
+const isSpacePressed = ref(false);
+const isAltPressed = ref(false);
+
+const handleKeyDown = (e) => {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+  if (e.key === 'Alt') { e.preventDefault(); isAltPressed.value = true; }
+  if (e.code === 'Space' && !isSpacePressed.value) {
+    e.preventDefault(); isSpacePressed.value = true;
+    lastTool.value = activeTool.value; activeTool.value = 'hand';
+  }
+  if ((e.ctrlKey || e.metaKey) && (e.key === '=' || e.key === '+')) { e.preventDefault(); zoomIn(); }
+  if ((e.ctrlKey || e.metaKey) && e.key === '-') { e.preventDefault(); zoomOut(); }
+  if ((e.ctrlKey || e.metaKey) && e.key === '0') { e.preventDefault(); resetZoom(); }
+  const key = e.key.toLowerCase();
+  const tool = tools.find(t => t.key === key);
+  if (tool) activeTool.value = tool.id;
+};
+
+const handleKeyUp = (e) => {
+  if (e.key === 'Alt') isAltPressed.value = false;
+  if (e.code === 'Space') { isSpacePressed.value = false; activeTool.value = lastTool.value; }
+};
+
+// ─── Canvas Interactions ────────────────────────────────────────────────────
 const canvasViewport = ref(null);
+const isPanning = ref(false);
+const startPanPos = { x: 0, y: 0 };
+const startPanOffset = { x: 0, y: 0 };
+
+const handleMouseDown = (e) => {
+  if (activeTool.value === 'hand' || isSpacePressed.value) {
+    isPanning.value = true;
+    startPanPos.x = e.clientX; startPanPos.y = e.clientY;
+    startPanOffset.x = panX.value; startPanOffset.y = panY.value;
+    document.body.style.cursor = 'grabbing';
+  } else if (activeTool.value === 'zoom') {
+    if (e.altKey || isAltPressed.value) zoomOut();
+    else zoomIn();
+  }
+};
+const handleMouseMove = (e) => {
+  if (isPanning.value) {
+    panX.value = startPanOffset.x + (e.clientX - startPanPos.x);
+    panY.value = startPanOffset.y + (e.clientY - startPanPos.y);
+  }
+};
+const handleMouseUp = () => { isPanning.value = false; document.body.style.cursor = ''; };
+const handleWheel = (e) => {
+  if (e.ctrlKey || e.metaKey || e.altKey) {
+    e.preventDefault();
+    if (e.deltaY < 0) zoomIn(); else zoomOut();
+  } else {
+    panX.value -= e.deltaX; panY.value -= e.deltaY;
+  }
+};
 
 onMounted(() => {
+  window.addEventListener('keydown', handleKeyDown);
+  window.addEventListener('keyup', handleKeyUp);
+  window.addEventListener('mouseup', handleMouseUp);
+  window.addEventListener('mousemove', handleMouseMove);
   document.addEventListener('click', closeMenu);
-  const el = canvasViewport.value;
-  if (el) el.addEventListener('wheel', handleWheel, { passive: false });
-  
-  // Auto-collapse panels and hide chrome on mobile init
-  if (window.innerWidth < 992) {
-    showPanels.value = false;
-    // Set a zoom that fits the screen better on mobile
-    if (window.innerWidth < 600) zoom.value = 0.6;
-  }
+});
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeyDown);
+  window.removeEventListener('keyup', handleKeyUp);
+  window.removeEventListener('mouseup', handleMouseUp);
+  window.removeEventListener('mousemove', handleMouseMove);
+  document.removeEventListener('click', closeMenu);
 });
 
-onUnmounted(() => {
-  document.removeEventListener('click', closeMenu);
-  const el = canvasViewport.value;
-  if (el) el.removeEventListener('wheel', handleWheel);
-});
+// ─── Tour Logic ──────────────────────────────────────────────────────────────
+const tourRef = ref(null);
+const tourSteps = [
+  {
+    title: "Creative Studio",
+    content: "Welcome to my interactive portfolio! This space is designed like my actual workspace to show you how I build designs.",
+    positionStyle: { top: '50%', left: '50%', transform: 'translate(-50%, -50%)' },
+    highlightStyle: { top: '50%', left: '50%', width: '0', height: '0', opacity: 0 },
+    arrowClass: ""
+  },
+  {
+    title: "The Toolbox",
+    content: "On the left, you'll find the tools I use every day. Use shortcuts like 'V' for Selection or 'Z' for Zoom.",
+    positionStyle: { top: '100px', left: '100px' },
+    highlightStyle: { top: '40px', left: '0', width: '52px', height: 'calc(100% - 72px)' },
+    arrowClass: "arrow-left"
+  }
+];
+const startTour = () => tourRef.value.startTour();
 </script>
 
 <template>
-  <div class="ai-app">
-    <!-- Top Bar (Minimal on Mobile) -->
+  <div class="ai-app" :class="{ 'space-active': isSpacePressed, 'alt-active': isAltPressed }">
+    <!-- Top Bar (HEADER) -->
     <div class="ai-topbar">
-      <div class="ai-logo" @click="navigateTo('/')">
+      <div class="ai-logo" @click="router.push('/')">
         <Home :size="18" style="color: #ff5722; cursor: pointer;" />
         <span class="logo-text hide-mobile">Illustrator</span>
       </div>
       
       <div class="ai-menu-bar no-drag hide-tablet">
-        <div class="ai-menu-item" @click="toggleMenu('file')">
-          <span :class="{ 'active': activeMenu === 'file' }">File</span>
-          <div v-if="activeMenu === 'file'" class="ai-dropdown">
+        <div 
+          v-for="menu in menus" 
+          :key="menu"
+          class="ai-menu-item" 
+          @click="toggleMenu(menu)"
+        >
+          <span :class="{ 'active': activeMenu === menu }">{{ menu }}</span>
+          <div v-if="activeMenu === menu" class="ai-dropdown">
             <div class="ai-dropdown-item">New... <span class="shortcut">Ctrl+N</span></div>
             <div class="ai-dropdown-item">Open... <span class="shortcut">Ctrl+O</span></div>
             <div class="ai-dropdown-divider"></div>
             <div class="ai-dropdown-item">Save <span class="shortcut">Ctrl+S</span></div>
           </div>
         </div>
-        <div class="ai-menu-item" @click="toggleMenu('edit')">
-          <span :class="{ 'active': activeMenu === 'edit' }">Edit</span>
-          <div v-if="activeMenu === 'edit'" class="ai-dropdown">
-            <div class="ai-dropdown-item">Undo <span class="shortcut">Ctrl+Z</span></div>
-            <div class="ai-dropdown-item">Redo <span class="shortcut">Shift+Ctrl+Z</span></div>
-          </div>
-        </div>
       </div>
 
       <div class="ai-top-controls no-drag">
         <div class="mobile-portfolio-label show-mobile">Portfolio.ai</div>
+        <button class="help-btn" @click="startTour" title="Start Tour">
+          <HelpCircle :size="18" />
+        </button>
         <button class="panel-toggle" @click="togglePanels" title="Toggle Panels">
           <PanelRight :size="18" />
         </button>
@@ -124,37 +223,38 @@ onUnmounted(() => {
     <!-- Main Workspace -->
     <div class="ai-workspace">
       
-      <!-- Left Toolbar (Hidden on small mobile, shown on tablet) -->
+      <!-- Left Toolbar -->
       <div class="ai-toolbar hide-mobile-small">
+        <div class="ai-toolbar-header"><ChevronsLeft :size="12" /></div>
         <div class="ai-tools-grid">
-          <button 
-            v-for="tool in tools.slice(0, 8)" 
-            :key="tool.id"
-            class="ai-tool-btn"
-            :class="{ active: activeTool === tool.id }"
-            @click="activeTool = tool.id"
-          >
-            <component :is="tool.icon" :size="16" />
+          <button v-for="tool in tools" :key="tool.id" class="ai-tool-btn" :class="{ active: activeTool === tool.id }" @click="activeTool = tool.id" :title="`${tool.id} (${tool.key})`">
+            <component :is="tool.icon" :size="14" />
           </button>
+        </div>
+        <div class="ai-toolbar-footer">
+          <div class="ai-color-system">
+            <div class="color-switcher">
+              <div class="color-box fill" style="background-color: #00aeef;"></div>
+              <div class="color-box stroke" style="background: transparent; border: 2px solid #fff;">
+                <div style="background: #fff; width: 100%; height: 2px; transform: rotate(-45deg);"></div>
+              </div>
+              <button class="swap-btn"><ArrowLeftRight :size="10" /></button>
+            </div>
+          </div>
+          <div class="screen-mode-toggle"><ScreenShare :size="14" /></div>
         </div>
       </div>
 
-      <!-- Center Canvas Area - THE FOCUS -->
-      <div class="ai-canvas-area">
+      <!-- Center Canvas Area -->
+      <div class="ai-canvas-area" :class="activeTool + '-tool'">
         <div class="ai-document-tabs hide-mobile">
-          <div class="ai-tab active">
-            Portfolio.ai @ {{ zoomPercent }}% 
-            <X :size="12" />
-          </div>
+          <div class="ai-tab active">Portfolio.ai @ {{ zoomPercent }}% <X :size="12" /></div>
         </div>
-        
-        <div class="ai-canvas-viewport" ref="canvasViewport">
-          <div class="ai-canvas-scaler" :style="{ transform: `scale(${zoom})`, transformOrigin: 'top center' }">
+        <div class="ai-canvas-viewport" ref="canvasViewport" @mousedown="handleMouseDown" @wheel="handleWheel">
+          <div class="ai-canvas-scaler" :style="{ transform: `translate(${panX}px, ${panY}px) scale(${zoom})`, transformOrigin: 'center center' }">
             <IllustratorCanvas />
           </div>
         </div>
-
-        <!-- Bottom Status Bar (Simplified on Mobile) -->
         <div class="ai-status-bar">
           <div class="zoom-controls">
             <button class="zoom-btn" @click="zoomOut"><Minus :size="12" /></button>
@@ -167,275 +267,152 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <!-- Right Panels (Collapsible / Floating on Mobile) -->
+      <!-- Right Panels (COMPLETE ILLUSTRATOR STYLE) -->
       <Transition name="panel-slide">
         <div class="ai-panels" v-if="showPanels">
           <div class="ai-panel-header-icons">
-            <span class="panel-header-title show-mobile">Properties</span>
-            <ChevronsRight :size="18" @click="togglePanels" style="cursor:pointer" />
+             <ChevronsRight :size="18" @click="togglePanels" style="cursor:pointer" />
           </div>
           
-          <div class="ai-panel-group expanded">
-            <div class="ai-panel-title active">Layers <Menu :size="12" class="float-right" /></div>
-            <div class="ai-panel-content p-layers">
-              <div class="layer-item">
-                <Eye :size="12" class="text-muted" /> <span class="color-tag" style="background: #ff5722;"></span> Portfolio
+          <!-- Properties Panel -->
+          <div class="ai-panel-group" :class="{ expanded: expandedPanels.includes('properties') }">
+            <div class="ai-panel-title" @click="togglePanel('properties')">
+              <Settings2 :size="12" /> Properties <ChevronDown :size="10" class="float-right" />
+            </div>
+            <div class="ai-panel-content" v-if="expandedPanels.includes('properties')">
+              <div class="prop-section">
+                <p class="section-label">Selection</p>
+                <div class="prop-row"><MousePointer :size="12" /> <span>No Selection</span></div>
               </div>
-              <div class="layer-item">
-                <Eye :size="12" class="text-muted" /> <span class="color-tag" style="background: #333;"></span> Background
+              <div class="prop-divider"></div>
+              <div class="prop-section">
+                <p class="section-label">Artboard</p>
+                <div class="prop-grid">
+                  <div class="p-item">W: 1920</div>
+                  <div class="p-item">H: 1080</div>
+                </div>
               </div>
             </div>
           </div>
 
+          <!-- Color Panel -->
+          <div class="ai-panel-group" :class="{ expanded: expandedPanels.includes('color') }">
+            <div class="ai-panel-title" @click="togglePanel('color')">
+              <Palette :size="12" /> Color <ChevronDown :size="10" class="float-right" />
+            </div>
+            <div class="ai-panel-content color-content" v-if="expandedPanels.includes('color')">
+              <div class="color-ramp"></div>
+              <div class="color-sliders">
+                <div class="slider"><span class="label">C</span><div class="bar cyan"></div><span class="val">0%</span></div>
+                <div class="slider"><span class="label">M</span><div class="bar magenta"></div><span class="val">100%</span></div>
+                <div class="slider"><span class="label">Y</span><div class="bar yellow"></div><span class="val">100%</span></div>
+                <div class="slider"><span class="label">K</span><div class="bar black"></div><span class="val">0%</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Layers Panel -->
+          <div class="ai-panel-group" :class="{ expanded: expandedPanels.includes('layers') }">
+            <div class="ai-panel-title" @click="togglePanel('layers')">
+              <Layers :size="12" /> Layers <ChevronDown :size="10" class="float-right" />
+            </div>
+            <div class="ai-panel-content" v-if="expandedPanels.includes('layers')">
+              <div class="layer-item active"><Eye :size="12" /> <span class="color-tag red"></span> <span>Design Work</span></div>
+              <div class="layer-item sub"><Eye :size="12" /> <span class="color-tag blue"></span> <span>UI Elements</span></div>
+              <div class="layer-item"><Eye :size="12" /> <span class="color-tag green"></span> <span>Background</span></div>
+            </div>
+          </div>
+
+          <!-- Sidebar Icons (Iconic Illustrator look) -->
           <div class="ai-panel-dock">
-             <div class="dock-icon"><Copy :size="18" /></div>
-             <div class="dock-icon"><Palette :size="18" /></div>
-             <div class="dock-icon"><Layers :size="18" /></div>
+             <div class="dock-icon"><Library :size="18" /></div>
+             <div class="dock-icon"><SwatchBook :size="18" /></div>
+             <div class="dock-icon"><History :size="18" /></div>
+             <div class="dock-icon"><List :size="18" /></div>
           </div>
         </div>
       </Transition>
 
     </div>
+    <PortfolioTour ref="tourRef" :steps="tourSteps" />
   </div>
 </template>
 
 <style scoped>
-.ai-app {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  background: #1a1a1a;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: #333;
-}
+.ai-app { display: flex; flex-direction: column; height: 100%; width: 100%; overflow: hidden; background: #1a1a1a; font-family: 'Segoe UI', sans-serif; }
 
-/* TOP BAR */
-.ai-topbar {
-  display: flex;
-  align-items: center;
-  background: #f0f0f0;
-  height: 40px;
-  border-bottom: 1px solid #ccc;
-  font-size: 13px;
-  padding: 0 10px;
-  flex-shrink: 0;
-  justify-content: space-between;
-}
-
-.ai-logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
+/* Header/Top Bar */
+.ai-topbar { display: flex; align-items: center; background: #f0f0f0; height: 40px; border-bottom: 1px solid #ccc; font-size: 13px; padding: 0 10px; flex-shrink: 0; }
+.ai-logo { display: flex; align-items: center; gap: 8px; margin-right: 20px; }
 .logo-text { font-weight: 700; color: #444; }
+.ai-menu-bar { display: flex; flex-grow: 1; }
+.ai-menu-item { position: relative; padding: 0 10px; cursor: pointer; font-size: 12px; height: 40px; display: flex; align-items: center; }
+.ai-menu-item:hover { background: #e0e0e0; }
+.ai-dropdown { position: absolute; top: 40px; left: 0; background: #fff; border: 1px solid #ccc; box-shadow: 0 4px 10px rgba(0,0,0,0.2); min-width: 180px; z-index: 1000; padding: 5px 0; }
+.ai-dropdown-item { padding: 6px 15px; display: flex; justify-content: space-between; font-size: 12px; color: #333; }
+.ai-dropdown-item:hover { background: #0078d7; color: #fff; }
 
-.ai-menu-bar {
-  display: flex;
-  flex-grow: 1;
-  justify-content: center;
-}
+.ai-top-controls { display: flex; align-items: center; gap: 10px; }
+.help-btn, .panel-toggle { background: #e0e0e0; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
+.ai-workspace-switcher { font-size: 11px; display: flex; align-items: center; gap: 5px; padding: 5px 8px; background: #e8e8e8; border-radius: 3px; border: 1px solid #ccc; }
 
-.ai-menu-item {
-  position: relative;
-  padding: 5px 12px;
-  cursor: pointer;
-  font-size: 12px;
-}
+/* Workspace */
+.ai-workspace { display: flex; flex-grow: 1; overflow: hidden; position: relative; }
+.ai-toolbar { width: 52px; background: #f0f0f0; border-right: 1px solid #ccc; display: flex; flex-direction: column; padding-bottom: 10px; }
+.ai-tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; padding: 5px 3px; }
+.ai-tool-btn { background: transparent; border: none; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; border-radius: 2px; cursor: pointer; color: #444; }
+.ai-tool-btn.active { background: #d0d0d0; color: #000; box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1); }
 
-.ai-top-controls {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
+/* Canvas */
+.ai-canvas-area { flex-grow: 1; display: flex; flex-direction: column; background: #e6e6e6; overflow: hidden; }
+.ai-canvas-viewport { flex-grow: 1; overflow: hidden; background: #333; display: flex; align-items: center; justify-content: center; position: relative; }
+.ai-canvas-scaler { transition: transform 0.1s ease-out; box-shadow: 0 10px 50px rgba(0,0,0,0.5); user-select: none; }
+.ai-status-bar { height: 32px; background: #f0f0f0; border-top: 1px solid #ccc; display: flex; align-items: center; font-size: 11px; padding: 0 15px; justify-content: space-between; }
 
-.mobile-portfolio-label {
-  font-weight: 800;
-  font-size: 12px;
-  color: #ff5722;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
+/* Right Panels */
+.ai-panels { width: 260px; background: #f0f0f0; border-left: 1px solid #ccc; display: flex; flex-direction: column; z-index: 100; }
+.ai-panel-header-icons { padding: 8px 15px; border-bottom: 1px solid #ccc; background: #e8e8e8; }
+.ai-panel-group { border-bottom: 1px solid #ccc; }
+.ai-panel-title { padding: 8px 15px; font-size: 11px; font-weight: 700; background: #e0e0e0; cursor: pointer; text-transform: uppercase; color: #444; display: flex; align-items: center; gap: 8px; }
+.ai-panel-title:hover { background: #d8d8d8; }
+.ai-panel-content { padding: 12px; background: #fff; font-size: 11px; color: #333; }
 
-.panel-toggle {
-  background: #e0e0e0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  cursor: pointer;
-  color: #333;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+/* Properties Section */
+.section-label { font-weight: 800; color: #888; text-transform: uppercase; font-size: 9px; margin-bottom: 8px; letter-spacing: 0.5px; }
+.prop-row { display: flex; align-items: center; gap: 8px; color: #666; margin-bottom: 10px; }
+.prop-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
+.p-item { background: #f0f0f0; padding: 4px 8px; border-radius: 2px; text-align: center; border: 1px solid #ddd; }
+.prop-divider { height: 1px; background: #eee; margin: 12px 0; }
 
-/* WORKSPACE */
-.ai-workspace {
-  display: flex;
-  flex-grow: 1;
-  overflow: hidden;
-  position: relative;
-}
+/* Color Section */
+.color-ramp { height: 12px; background: linear-gradient(to right, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00); margin-bottom: 12px; border: 1px solid #ccc; }
+.slider { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.slider .label { width: 10px; font-weight: bold; }
+.slider .bar { height: 8px; flex-grow: 1; border: 1px solid #ccc; }
+.bar.cyan { background: linear-gradient(to right, #fff, #0ff); }
+.bar.magenta { background: linear-gradient(to right, #fff, #f0f); }
+.bar.yellow { background: linear-gradient(to right, #fff, #ff0); }
+.bar.black { background: linear-gradient(to right, #fff, #000); }
+.slider .val { width: 30px; text-align: right; color: #888; }
 
-/* TOOLBAR */
-.ai-toolbar {
-  width: 44px;
-  background: #f0f0f0;
-  border-right: 1px solid #ccc;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px 0;
-  z-index: 10;
-}
+/* Layers Section */
+.layer-item { display: flex; align-items: center; gap: 10px; padding: 6px 8px; border-radius: 3px; cursor: pointer; }
+.layer-item.active { background: #e0e0e0; font-weight: 600; }
+.layer-item.sub { margin-left: 20px; color: #666; font-size: 10px; }
+.color-tag { width: 4px; height: 14px; border-radius: 1px; }
+.color-tag.red { background: #ff4d4d; }
+.color-tag.blue { background: #4d94ff; }
+.color-tag.green { background: #47d147; }
 
-.ai-tools-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
+.ai-panel-dock { margin-top: auto; display: flex; background: #e0e0e0; border-top: 1px solid #ccc; }
+.dock-icon { padding: 12px; flex-grow: 1; text-align: center; border-right: 1px solid #ccc; display: flex; justify-content: center; cursor: pointer; color: #666; }
+.dock-icon:hover { color: #ff5722; background: #d8d8d8; }
 
-.ai-tool-btn {
-  background: transparent;
-  border: none;
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-  cursor: pointer;
-  color: #444;
-}
-
-.ai-tool-btn.active { background: #d0d0d0; color: #000; }
-
-/* CANVAS AREA - THE MAIN STAGE */
-.ai-canvas-area {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  background: #e6e6e6;
-  overflow: hidden;
-}
-
-.ai-document-tabs {
-  display: flex;
-  background: #f0f0f0;
-  border-bottom: 1px solid #ccc;
-  height: 30px;
-}
-
-.ai-tab {
-  padding: 0 15px;
-  background: #fff;
-  border-right: 1px solid #ccc;
-  font-size: 11px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  height: 100%;
-  font-weight: 500;
-}
-
-.ai-canvas-viewport {
-  flex-grow: 1;
-  overflow: auto;
-  background: #333;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 40px;
-  -webkit-overflow-scrolling: touch;
-}
-
-.ai-canvas-scaler {
-  transition: transform 0.2s ease-out;
-  box-shadow: 0 10px 50px rgba(0,0,0,0.5);
-}
-
-.ai-status-bar {
-  height: 32px;
-  background: #f0f0f0;
-  border-top: 1px solid #ccc;
-  display: flex;
-  align-items: center;
-  font-size: 11px;
-  padding: 0 15px;
-  justify-content: space-between;
-}
-
-.zoom-controls { display: flex; align-items: center; gap: 8px; }
-.zoom-btn { background: #fff; border: 1px solid #ccc; border-radius: 4px; width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; }
-.zoom-label { min-width: 40px; text-align: center; font-weight: 600; cursor: pointer; }
-
-.mobile-hint { font-weight: 500; color: #888; }
-
-/* PANELS */
-.ai-panels {
-  width: 260px;
-  background: #f0f0f0;
-  border-left: 1px solid #ccc;
-  display: flex;
-  flex-direction: column;
-  z-index: 100;
-}
-
-.panel-header-title { font-weight: 700; flex-grow: 1; text-align: left; }
-
-.ai-panel-header-icons {
-  padding: 10px 15px;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid #ccc;
-}
-
-.ai-panel-title {
-  padding: 8px 15px;
-  font-size: 12px;
-  background: #e8e8e8;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.ai-panel-content { padding: 10px; background: #fff; }
-
-/* RESPONSIVE UTILITIES */
+/* Responsive */
 .show-mobile { display: none; }
-
-@media (max-width: 991px) {
-  .ai-menu-bar, .hide-tablet { display: none !important; }
-  .ai-panels {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    box-shadow: -10px 0 30px rgba(0,0,0,0.3);
-  }
-}
-
-@media (max-width: 767px) {
-  .hide-mobile { display: none !important; }
-  .show-mobile { display: flex; }
-  .ai-canvas-viewport { padding: 15px; }
-  .ai-toolbar { width: 40px; }
-  .ai-status-bar { height: 40px; }
-}
-
-@media (max-width: 575px) {
-  .hide-mobile-small { display: none !important; }
-  .ai-canvas-area { width: 100%; }
-}
-
-/* Transitions */
+@media (max-width: 991px) { .ai-menu-bar, .hide-tablet { display: none !important; } .ai-panels { position: absolute; right: 0; top: 0; bottom: 0; box-shadow: -10px 0 30px rgba(0,0,0,0.3); } }
+@media (max-width: 767px) { .hide-mobile { display: none !important; } .show-mobile { display: flex; } .ai-toolbar { width: 38px; } .ai-tools-grid { grid-template-columns: 1fr; } }
+.float-right { float: right; }
 .panel-slide-enter-active, .panel-slide-leave-active { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
 .panel-slide-enter-from, .panel-slide-leave-to { transform: translateX(100%); }
-
-.float-right { float: right; }
-.text-muted { color: #888; }
-.color-tag { width: 10px; height: 10px; display: inline-block; border-radius: 2px; }
-.ai-panel-dock { margin-top: auto; display: flex; background: #e0e0e0; }
-.dock-icon { padding: 12px; flex-grow: 1; text-align: center; border-right: 1px solid #ccc; display: flex; justify-content: center; }
 </style>

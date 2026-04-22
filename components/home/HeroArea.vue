@@ -120,17 +120,20 @@ const { openWindow } = useIllustratorWindow();
     display: flex;
     justify-content: center;
     padding: 20px 0;
+    position: relative;
+    z-index: 20; /* High priority for the image container */
 }
 
 /* ── Image & Hover Effect ───────────────────────────────────── */
 .hero-image {
     position: relative;
+    z-index: 21; /* Ensure image is above its container and siblings */
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .hero-image:hover {
     transform: scale(1.03) translateY(-5px);
-    z-index: 10;
+    z-index: 25;
 }
 
 .hero-image img {

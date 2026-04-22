@@ -55,12 +55,7 @@ function handleImagePopup(index) {
           <AboutResumeArea />
           <AboutSkillArea />
           <HomeServiceArea />
-          <HomePortfolioArea
-            :portfolio_data="portfolio_data"
-            :handleImagePopup="handleImagePopup"
-          />
-          <!-- <HomeTestimonoalArea /> -->
-          <HomeBlogArea />
+          <HomePortfolioCTA />
           <HomeContactArea />
         </main>
         <Footer />

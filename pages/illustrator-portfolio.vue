@@ -1,15 +1,9 @@
 <script setup>
-import { onMounted } from 'vue';
 import IllustratorLayout from '~/components/portfolio-ui/IllustratorLayout.vue';
 
-// Remove the automatic redirect to keep users on this dedicated portfolio page.
-// This ensures a stable, responsive experience for both mobile and desktop.
-const { openWindow } = useIllustratorWindow();
-
-onMounted(() => {
-  // We still trigger the state just in case other components need to know it's "open"
-  openWindow();
-});
+// This page renders IllustratorLayout directly in full-screen.
+// We intentionally do NOT call openWindow() here — that would set shared
+// useState(isOpen=true) which bleeds onto the home page after navigation.
 </script>
 
 <template>
@@ -43,10 +37,5 @@ onMounted(() => {
   flex-direction: column;
   overflow: hidden;
 }
-
-/* Ensure body doesn't scroll when this page is open */
-:global(body) {
-  overflow: hidden !important;
-  height: 100% !important;
-}
+/* NOTE: DO NOT add :global(body) overflow:hidden here — it leaks across page navigation in Nuxt */
 </style>

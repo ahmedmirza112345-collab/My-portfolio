@@ -42,19 +42,19 @@ const props = defineProps({
                     :key="i"
                     :class="[
                       item.has_dropdown ? 'has-dropdown' : '',
-                      navTitle === item.title ? 'dropdown-opened' : ''
+                      navTitle.value === item.title ? 'dropdown-opened' : ''
                     ]"
                   >
                     <NuxtLink :to="item.link" class="linkstyle">{{ item.title }}</NuxtLink>
                     <template v-if="item.has_dropdown">
-                      <ul class="sub-menu" :style="{ display: navTitle === item.title ? 'block' : 'none' }">
+                      <ul class="sub-menu" :style="{ display: navTitle.value === item.title ? 'block' : 'none' }">
                         <li v-for="(sub_menu, index) in item.sub_menus" :key="index">
                           <NuxtLink :to="sub_menu.link">{{ sub_menu.title }}</NuxtLink>
                         </li>
                       </ul>
                       <a
                         class="mean-expand"
-                        :class="{ 'mean-clicked': navTitle === item.title }"
+                        :class="{ 'mean-clicked': navTitle.value === item.title }"
                         @click="openMobileMenu(item.title)"
                         style="font-size: 18px; cursor: pointer;"
                       >

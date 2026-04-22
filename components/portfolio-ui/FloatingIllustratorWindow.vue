@@ -1,17 +1,17 @@
 <script setup>
-import { ref, reactive, computed, onUnmounted } from 'vue';
+import { ref, reactive, computed, onMounted, onUnmounted } from 'vue';
 import { Layout, Maximize2, X, Minus, Square } from 'lucide-vue-next';
 import IllustratorLayout from './IllustratorLayout.vue';
 
 const { isOpen, isMinimized, closeWindow, minimizeWindow, restoreWindow } = useIllustratorWindow();
 
-// ── Window geometry ───────────────────────────────────────────
-const isMaximized = ref(false);
-// Start windowed at 90% of viewport, capped at 1200x750
+// ── Window geometry ─────────────────────────────────────────
+const isMaximized = ref(false); // Start windowed to prevent accidental site coverage
+// Start windowed at 80% of viewport, capped at 1200x750
 const getDefaultWin = () => (process.client
-  ? { x: 40, y: 40, w: Math.min(1200, Math.round(window.innerWidth * 0.88)), h: Math.min(750, Math.round(window.innerHeight * 0.88)) }
-  : { x: 40, y: 40, w: 1100, h: 680 });
-const WIN = ref({ x: 40, y: 40, w: 1100, h: 680 });
+  ? { x: 40, y: 100, w: Math.min(1200, Math.round(window.innerWidth * 0.8)), h: Math.min(750, Math.round(window.innerHeight * 0.8)) }
+  : { x: 40, y: 100, w: 1100, h: 680 });
+const WIN = ref({ x: 40, y: 100, w: 1100, h: 680 });
 const win = reactive({ ...WIN.value });
 
 onMounted(() => {
@@ -19,6 +19,10 @@ onMounted(() => {
   WIN.value = d;
   Object.assign(win, d);
 });
+
+// No scroll lock needed — the window is position:fixed and never
+// affects the underlying page scroll.
+
 const isDragging = ref(false);
 
 // ── Drag (with 5px threshold so button clicks don't drag) ─────

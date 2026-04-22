@@ -31,20 +31,8 @@ const menu_data: DataType[] = [
     },
     {
         id: 4,
-        title: "Projects",
-        link: "/#projects",
-        has_dropdown: false,
-    },
-    {
-        id: 7,
-        title: "Single Project",
-        link: "/single-project",
-        has_dropdown: false,
-    },
-    {
-        id: 8,
-        title: "Illustrator View",
-        link: "/illustrator-portfolio",
+        title: "Portfolio",
+        link: "/illustrator-portfolio", // Links to the actual portfolio page
         has_dropdown: false,
     },
     {
