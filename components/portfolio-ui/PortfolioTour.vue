@@ -118,7 +118,7 @@ onMounted(() => {
 .step-indicator {
   font-size: 12px;
   font-weight: 700;
-  color: #ff5722;
+  color: #4169E1;
   text-transform: uppercase;
   display: flex;
   align-items: center;
@@ -192,7 +192,7 @@ onMounted(() => {
   border-radius: 8px;
   pointer-events: none;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 2px solid #ff5722;
+  border: 2px solid #4169E1;
 }
 
 /* Arrow Logic */

@@ -105,7 +105,7 @@ onUnmounted(() => {
       <Transition name="mini">
         <div v-if="isMinimized" class="mini-thumb">
           <div class="mini-titlebar">
-            <Layout :size="14" color="currentColor" :stroke-width="2" style="color:#ff5722;" />
+            <Layout :size="14" color="currentColor" :stroke-width="2" style="color:#4169E1;" />
             <span class="mini-title">Portfolio Design.ai</span>
             <button class="mini-btn" @click.stop="restoreWindow" title="Restore">
               <Maximize2 :size="13" color="currentColor" :stroke-width="2" />
@@ -115,7 +115,7 @@ onUnmounted(() => {
             </button>
           </div>
           <div class="mini-preview" @click="restoreWindow">
-            <span class="mini-word">port<span style="color:#ff5722">f</span>olio</span>
+            <span class="mini-word">port<span style="color:#4169E1">f</span>olio</span>
           </div>
           <div class="mini-footer" @click="restoreWindow">Click to restore</div>
         </div>
@@ -144,7 +144,7 @@ onUnmounted(() => {
           <!-- Windows-style title bar (DRAG HANDLE) -->
           <div class="win-titlebar" @mousedown="initDrag" @dblclick="handleToggleMaximize">
             <div class="win-title-left">
-              <Layout :size="16" color="currentColor" :stroke-width="2" style="color:#ff5722;" />
+              <Layout :size="16" color="currentColor" :stroke-width="2" style="color:#4169E1;" />
               <span class="win-title-text">Portfolio Design.ai — Adobe Illustrator</span>
             </div>
             <div class="win-controls">
@@ -322,7 +322,7 @@ onUnmounted(() => {
   background: #111;
   cursor: pointer;
 }
-.mini-footer:hover { color: #ff5722; }
+.mini-footer:hover { color: #4169E1; }
 
 /* ── Transitions ───────────────────────────────────────────── */
 .window-enter-active, .window-leave-active { transition: opacity 0.2s, transform 0.2s; }

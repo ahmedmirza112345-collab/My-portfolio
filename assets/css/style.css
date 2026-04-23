@@ -213,7 +213,6 @@ textarea::-webkit-input-placeholder,
 .form-control::-webkit-input-placeholder {
     color: #070707 !important;
     opacity: .4;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
 }
 
 input:-ms-input-placeholder,
@@ -223,7 +222,6 @@ textarea:-ms-input-placeholder,
 .form-control:-ms-input-placeholder {
     color: #070707 !important;
     opacity: .4;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
 }
 
 input::-ms-input-placeholder,
@@ -233,7 +231,6 @@ textarea::-ms-input-placeholder,
 .form-control::-ms-input-placeholder {
     color: #070707 !important;
     opacity: .4;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
 }
 
 input::-webkit-input-placeholder,
@@ -243,7 +240,6 @@ textarea::-webkit-input-placeholder,
 .form-control::-webkit-input-placeholder {
     color: #070707 !important;
     opacity: .4;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
 }
 
 input::-moz-placeholder,
@@ -253,7 +249,6 @@ textarea::-moz-placeholder,
 .form-control::-moz-placeholder {
     color: #070707 !important;
     opacity: .4;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
 }
 
 input:-ms-input-placeholder,
@@ -263,7 +258,6 @@ textarea:-ms-input-placeholder,
 .form-control:-ms-input-placeholder {
     color: #070707 !important;
     opacity: .4;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
 }
 
 input::placeholder,
@@ -273,7 +267,6 @@ textarea::placeholder,
 .form-control::placeholder {
     color: #070707 !important;
     opacity: .4;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
 }
 
 input:focus,
@@ -712,7 +705,7 @@ html {
     margin-right: 5px;
 }
 
-.slider-arrows button:last-child {}
+
 
 /*** Slick Dots ***/
 .slick-dots {
@@ -734,7 +727,6 @@ html {
     width: 6px;
     height: 6px;
     opacity: 0.3;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
     -webkit-transition: 0.5s;
     transition: 0.5s;
     border-radius: 50%;
@@ -743,7 +735,6 @@ html {
 
 .slick-dots li button {
     opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     height: 0;
 }
 
@@ -765,7 +756,6 @@ html {
 .slick-dots li.slick-active {
     background: var(--primary-color);
     opacity: 1;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 
 .slick-dots li.slick-active:before {
@@ -909,7 +899,6 @@ html {
 .main-menu ul li:hover .sub-menu {
     visibility: visible;
     opacity: 1;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     top: 100%;
 }
 
@@ -921,7 +910,6 @@ html {
     min-width: 180px;
     background-color: var(--black-color);
     opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     visibility: hidden;
     z-index: 99;
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.16);
@@ -968,7 +956,6 @@ html {
     top: 0;
     visibility: hidden;
     opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 }
 
 .main-menu ul li .sub-menu li:hover>.sub-menu {
@@ -976,7 +963,6 @@ html {
     left: auto;
     visibility: visible;
     opacity: 1;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 }
 
 .side-menu-icon i {
@@ -992,6 +978,7 @@ html {
     font-size: 18px;
     position: relative;
     white-space: nowrap;
+    color: #070707 !important;
 }
 
 .linkstyle:before {
@@ -1206,7 +1193,6 @@ html {
     z-index: 999;
     left: 0;
     opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     visibility: hidden;
     -webkit-transition: all 0.3s ease-out 0s;
     transition: all 0.3s ease-out 0s;
@@ -1218,7 +1204,6 @@ html {
 
 .body-overlay.opened {
     opacity: 1;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     visibility: visible;
 }
 
@@ -1717,7 +1702,7 @@ h2.about-pre-title {
     background: var(--black-color);
 }
 
-.extra-skills {}
+
 
 .extra-skills ul {
     margin-top: 30px;
@@ -1883,7 +1868,7 @@ ul.extra-skills li i {
     background: var(--black-color);
 }
 
-.extra-skills {}
+
 
 .extra-skills ul {
     margin-top: 30px;
@@ -1973,7 +1958,6 @@ ul.extra-skills li i {
     top: 0;
     left: 0;
     opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     background-image: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0.3), transparent);
     background-image: linear-gradient(to top, rgba(0, 0, 0, 0.3), transparent);
     width: 100%;
@@ -2018,7 +2002,6 @@ ul.extra-skills li i {
     left: 0;
     visibility: hidden;
     opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     margin-bottom: -6px;
     padding: 0 30px 24px;
     -webkit-transition: ease-out 0.5s;
@@ -2042,7 +2025,6 @@ ul.extra-skills li i {
 
 .portfolio-box:hover:after {
     opacity: 1;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"
 }
 
 .portfolio-box:hover img {
@@ -2056,7 +2038,6 @@ ul.extra-skills li i {
 .portfolio-box:hover .portfolio-caption {
     visibility: visible;
     opacity: 1;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     margin-bottom: 0
 }
 
@@ -2277,7 +2258,6 @@ ul.extra-skills li i {
 
 .pricing-item .pricing-details ul li.unable {
     color: rgb(119, 119, 125);
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=35)";
 }
 
 .pricing-item .pricing-details ul li.unable:before {
@@ -2524,7 +2504,7 @@ ul.extra-skills li i {
     background: var(--primary-color);
 }
 
-.footer-bottom {}
+
 
 p.copy-left-text {
     color: #070707 !important;
@@ -2676,25 +2656,21 @@ body.loaded {
 @-webkit-keyframes loading {
     0% {
         opacity: 1;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    }
+        }
 
     100% {
         opacity: 0;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    }
+        }
 }
 
 @keyframes loading {
     0% {
         opacity: 1;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    }
+        }
 
     100% {
         opacity: 0;
-        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    }
+        }
 }
 
 .color-pulse {
@@ -2752,7 +2728,6 @@ body.loaded {
     border-radius: 50px;
     z-index: 100;
     opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     visibility: hidden;
     -webkit-transform: translateY(20px);
     transform: translateY(20px);
@@ -2763,7 +2738,6 @@ body.loaded {
 
 .progress-wrap.active-progress {
     opacity: 1;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
     visibility: visible;
     -webkit-transform: translateY(0);
     transform: translateY(0);
@@ -2817,7 +2791,6 @@ body.loaded {
     border-radius: 50%;
     pointer-events: none;
     opacity: 0;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     box-sizing: border-box;
     /* -webkit-transform: scale(0.5);
     transform: scale(0.5); */
@@ -2844,14 +2817,12 @@ body.loaded {
     height: 80px;
     background-color: #cc0000;
     opacity: .3;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
 }
 
 #ball.hovered {
     -webkit-transition: opacity .3s;
     transition: opacity .3s;
     opacity: 0 !important;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 }
 
 
@@ -3124,7 +3095,6 @@ ul.blog_pagination li a:hover {
     font-size: 16px;
     padding: 5px 0;
     opacity: .7;
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
 }
 
 .single-side-bar ul li a span {
@@ -3259,7 +3229,7 @@ ul.blog_pagination li a:hover {
     font-weight: 700;
 }
 
-.single-comment p {}
+
 
 .single-comment a {
     color: #fff;
@@ -3410,7 +3380,7 @@ ul.blog_pagination li a:hover {
     padding-right: 60q;
 }
 
-.single-side-bar {}
+
 
 .single-side-bar {
     -webkit-transition: 0.5s;
@@ -3595,7 +3565,7 @@ a {
     transform: translateX(-50%) translateY(-3px);
     box-shadow: 0 12px 40px rgba(0,0,0,0.6);
 }
-.illustrator-taskbar i { font-size: 18px; color: #ff5722; }
+.illustrator-taskbar i { font-size: 18px; color: #4169E1; }
 
 .taskbar-enter-active, .taskbar-leave-active { transition: all 0.3s ease; }
 .taskbar-enter-from, .taskbar-leave-to { opacity: 0; transform: translateX(-50%) translateY(20px); }

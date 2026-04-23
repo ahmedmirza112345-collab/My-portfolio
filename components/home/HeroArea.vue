@@ -63,8 +63,9 @@ const { openWindow } = useIllustratorWindow();
     margin-bottom: 50px;
     padding-top: 100px;
     width: 100%;
-    overflow: hidden;
+    overflow: visible; /* Allow image to spill out if needed */
     position: relative;
+    z-index: 50; /* Ensure section is on top of following sections */
 }
 
 /* ── Title Section ─────────────────────────────────────────── */
@@ -97,6 +98,8 @@ const { openWindow } = useIllustratorWindow();
 .hero-side-column {
     width: 25%;
     flex-shrink: 0;
+    position: relative;
+    z-index: 10; /* Lower than image */
 }
 
 .hero-side-column.left {
@@ -121,13 +124,13 @@ const { openWindow } = useIllustratorWindow();
     justify-content: center;
     padding: 20px 0;
     position: relative;
-    z-index: 20; /* High priority for the image container */
+    z-index: 100; /* Much higher priority for the image container */
 }
 
 /* ── Image & Hover Effect ───────────────────────────────────── */
 .hero-image {
     position: relative;
-    z-index: 21; /* Ensure image is above its container and siblings */
+    z-index: 1000; /* Extremely high priority */
     transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -162,7 +165,7 @@ const { openWindow } = useIllustratorWindow();
 .portfolio-btn:hover {
     background: #111;
     border-color: rgba(255, 255, 255, 0.35);
-    box-shadow: 0 0 0 1px rgba(255,87,34,0.4);
+    box-shadow: 0 0 0 1px rgba(65, 105, 225, 0.4);
 }
 
 .portfolio-btn-text {
@@ -189,8 +192,8 @@ const { openWindow } = useIllustratorWindow();
 }
 
 .portfolio-btn:hover .portfolio-btn-arrow {
-    background: #ff5722;
-    border-color: #ff5722;
+    background: #4169E1;
+    border-color: #4169E1;
     transform: rotate(45deg);
 }
 

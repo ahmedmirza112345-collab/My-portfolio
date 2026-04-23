@@ -90,7 +90,7 @@ const handleCTAClick = () => {
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: 4px;
-    color: #ff5722;
+    color: #4169E1;
     margin-bottom: 20px;
     font-weight: 700;
 }
@@ -124,7 +124,7 @@ const handleCTAClick = () => {
 }
 
 .cta-primary-btn {
-    background: #ff5722;
+    background: #4169E1;
     color: #fff;
     border: none;
     padding: 20px 40px;
@@ -143,7 +143,7 @@ const handleCTAClick = () => {
     background: #fff;
     color: #000;
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(255, 87, 34, 0.3);
+    box-shadow: 0 10px 30px rgba(65, 105, 225, 0.3);
 }
 
 .cta-secondary-link {
@@ -207,7 +207,8 @@ const handleCTAClick = () => {
 
 .toolbar-hint { width: 30px; height: 100%; background: #222; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #444; }
 .canvas-hint { flex-grow: 1; position: relative; }
-.rect { width: 50px; height: 50px; border: 1px solid #ff5722; position: absolute; top: 10px; left: 10px; }
+.rect { width: 50px; height: 50px;    border: 1px solid #4169E1;
+ position: absolute; top: 10px; left: 10px; }
 .circle { width: 40px; height: 40px; border: 1px solid #fff; border-radius: 50%; position: absolute; bottom: 40px; right: 10px; opacity: 0.3; }
 
 @media (max-width: 1200px) {

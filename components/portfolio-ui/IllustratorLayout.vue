@@ -111,6 +111,13 @@ const handleKeyUp = (e) => {
   if (e.code === 'Space') { isSpacePressed.value = false; activeTool.value = lastTool.value; }
 };
 
+// ─── Artboards Configuration ────────────────────────────────────────────────
+const artboards = ref([
+  { id: 1, type: 'logo',   name: 'Brand Identity (Logo)',   x: 0,    y: 0 },
+  { id: 2, type: 'poster', name: 'Brutalist Poster Design', x: 1000, y: -100 },
+  { id: 3, type: 'ui',     name: 'Mobile App UX/UI',        x: 1800, y: 50 },
+]);
+
 // ─── Canvas Interactions ────────────────────────────────────────────────────
 const canvasViewport = ref(null);
 const isPanning = ref(false);
@@ -163,18 +170,18 @@ onUnmounted(() => {
 const tourRef = ref(null);
 const tourSteps = [
   {
-    title: "Creative Studio",
-    content: "Welcome to my interactive portfolio! This space is designed like my actual workspace to show you how I build designs.",
+    title: "Multi-Artboard Studio",
+    content: "Welcome to my expanded studio! I've laid out my skills across multiple canvases: Logos, Posters, and UI designs.",
     positionStyle: { top: '50%', left: '50%', transform: 'translate(-50%, -50%)' },
     highlightStyle: { top: '50%', left: '50%', width: '0', height: '0', opacity: 0 },
     arrowClass: ""
   },
   {
-    title: "The Toolbox",
-    content: "On the left, you'll find the tools I use every day. Use shortcuts like 'V' for Selection or 'Z' for Zoom.",
-    positionStyle: { top: '100px', left: '100px' },
-    highlightStyle: { top: '40px', left: '0', width: '52px', height: 'calc(100% - 72px)' },
-    arrowClass: "arrow-left"
+    title: "The Workspace",
+    content: "Use the Hand Tool (H) to pan between these artboards, or use the scroll wheel while holding Ctrl to zoom in on details.",
+    positionStyle: { top: '50%', left: '50%', transform: 'translate(-50%, -50%)' },
+    highlightStyle: { top: '50%', left: '50%', width: '100%', height: '100%', opacity: 0.1 },
+    arrowClass: ""
   }
 ];
 const startTour = () => tourRef.value.startTour();
@@ -185,7 +192,7 @@ const startTour = () => tourRef.value.startTour();
     <!-- Top Bar (HEADER) -->
     <div class="ai-topbar">
       <div class="ai-logo" @click="router.push('/')">
-        <Home :size="18" style="color: #ff5722; cursor: pointer;" />
+        <Home :size="18" style="color: #4169E1; cursor: pointer;" />
         <span class="logo-text hide-mobile">Illustrator</span>
       </div>
       
@@ -252,9 +259,16 @@ const startTour = () => tourRef.value.startTour();
         </div>
         <div class="ai-canvas-viewport" ref="canvasViewport" @mousedown="handleMouseDown" @wheel="handleWheel">
           <div class="ai-canvas-scaler" :style="{ transform: `translate(${panX}px, ${panY}px) scale(${zoom})`, transformOrigin: 'center center' }">
-            <IllustratorCanvas />
+            
+            <!-- Render Multiple Artboards -->
+            <div v-for="board in artboards" :key="board.id" class="artboard-wrapper" :style="{ transform: `translate(${board.x}px, ${board.y}px)` }">
+              <div class="artboard-label">{{ board.name }}</div>
+              <IllustratorCanvas :type="board.type" />
+            </div>
+
           </div>
         </div>
+
         <div class="ai-status-bar">
           <div class="zoom-controls">
             <button class="zoom-btn" @click="zoomOut"><Minus :size="12" /></button>
@@ -344,17 +358,18 @@ const startTour = () => tourRef.value.startTour();
 /* Header/Top Bar */
 .ai-topbar { display: flex; align-items: center; background: #f0f0f0; height: 40px; border-bottom: 1px solid #ccc; font-size: 13px; padding: 0 10px; flex-shrink: 0; }
 .ai-logo { display: flex; align-items: center; gap: 8px; margin-right: 20px; }
-.logo-text { font-weight: 700; color: #444; }
+.logo-text { font-weight: 700; color: #000; }
 .ai-menu-bar { display: flex; flex-grow: 1; }
-.ai-menu-item { position: relative; padding: 0 10px; cursor: pointer; font-size: 12px; height: 40px; display: flex; align-items: center; }
+.ai-menu-item { position: relative; padding: 0 10px; cursor: pointer; font-size: 12px; height: 40px; display: flex; align-items: center; color: #000; }
 .ai-menu-item:hover { background: #e0e0e0; }
 .ai-dropdown { position: absolute; top: 40px; left: 0; background: #fff; border: 1px solid #ccc; box-shadow: 0 4px 10px rgba(0,0,0,0.2); min-width: 180px; z-index: 1000; padding: 5px 0; }
-.ai-dropdown-item { padding: 6px 15px; display: flex; justify-content: space-between; font-size: 12px; color: #333; }
+.ai-dropdown-item { padding: 6px 15px; display: flex; justify-content: space-between; font-size: 12px; color: #000; }
 .ai-dropdown-item:hover { background: #0078d7; color: #fff; }
 
 .ai-top-controls { display: flex; align-items: center; gap: 10px; }
-.help-btn, .panel-toggle { background: #e0e0e0; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; }
-.ai-workspace-switcher { font-size: 11px; display: flex; align-items: center; gap: 5px; padding: 5px 8px; background: #e8e8e8; border-radius: 3px; border: 1px solid #ccc; }
+.help-btn, .panel-toggle { background: #e0e0e0; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; color: #000; }
+.ai-workspace-switcher { font-size: 11px; display: flex; align-items: center; gap: 5px; padding: 5px 8px; background: #e8e8e8; border-radius: 3px; border: 1px solid #ccc; color: #000; }
+.mobile-portfolio-label { font-size: 14px; font-weight: 700; color: #000; }
 
 /* Workspace */
 .ai-workspace { display: flex; flex-grow: 1; overflow: hidden; position: relative; }
@@ -366,14 +381,31 @@ const startTour = () => tourRef.value.startTour();
 /* Canvas */
 .ai-canvas-area { flex-grow: 1; display: flex; flex-direction: column; background: #e6e6e6; overflow: hidden; }
 .ai-canvas-viewport { flex-grow: 1; overflow: hidden; background: #333; display: flex; align-items: center; justify-content: center; position: relative; }
-.ai-canvas-scaler { transition: transform 0.1s ease-out; box-shadow: 0 10px 50px rgba(0,0,0,0.5); user-select: none; }
-.ai-status-bar { height: 32px; background: #f0f0f0; border-top: 1px solid #ccc; display: flex; align-items: center; font-size: 11px; padding: 0 15px; justify-content: space-between; }
+.ai-canvas-scaler { transition: transform 0.1s ease-out; user-select: none; position: relative; }
+
+.artboard-wrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.artboard-label {
+  font-size: 11px;
+  color: #888;
+  margin-bottom: 5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ai-status-bar { height: 32px; background: #f0f0f0; border-top: 1px solid #ccc; display: flex; align-items: center; font-size: 11px; padding: 0 15px; justify-content: space-between; color: #000; }
 
 /* Right Panels */
 .ai-panels { width: 260px; background: #f0f0f0; border-left: 1px solid #ccc; display: flex; flex-direction: column; z-index: 100; }
 .ai-panel-header-icons { padding: 8px 15px; border-bottom: 1px solid #ccc; background: #e8e8e8; }
 .ai-panel-group { border-bottom: 1px solid #ccc; }
-.ai-panel-title { padding: 8px 15px; font-size: 11px; font-weight: 700; background: #e0e0e0; cursor: pointer; text-transform: uppercase; color: #444; display: flex; align-items: center; gap: 8px; }
+.ai-panel-title { padding: 8px 15px; font-size: 11px; font-weight: 700; background: #e0e0e0; cursor: pointer; text-transform: uppercase; color: #000; display: flex; align-items: center; gap: 8px; }
 .ai-panel-title:hover { background: #d8d8d8; }
 .ai-panel-content { padding: 12px; background: #fff; font-size: 11px; color: #333; }
 
@@ -406,7 +438,7 @@ const startTour = () => tourRef.value.startTour();
 
 .ai-panel-dock { margin-top: auto; display: flex; background: #e0e0e0; border-top: 1px solid #ccc; }
 .dock-icon { padding: 12px; flex-grow: 1; text-align: center; border-right: 1px solid #ccc; display: flex; justify-content: center; cursor: pointer; color: #666; }
-.dock-icon:hover { color: #ff5722; background: #d8d8d8; }
+.dock-icon:hover { color: #4169E1; background: #d8d8d8; }
 
 /* Responsive */
 .show-mobile { display: none; }
