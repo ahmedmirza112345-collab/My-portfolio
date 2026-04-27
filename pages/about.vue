@@ -15,21 +15,31 @@ onMounted(async () => {
 });
 
 onMounted(() => {
-  $ScrollSmoother.create({
-    wrapper : '#smooth-wrapper',
-    content : '#smooth-content',
-    smooth: 2,
-    effects: true   
-  })
-  
-})
+  let mm = gsap.matchMedia();
+
+  mm.add("(min-width: 992px)", () => {
+    $ScrollSmoother.create({
+      wrapper: '#smooth-wrapper',
+      content: '#smooth-content',
+      smooth: 2,
+      effects: true
+    });
+  });
+
+  mm.add("(max-width: 991px)", () => {
+    gsap.set("#smooth-content", { clearProps: "all" });
+  });
+});
 
 import Header from "~/layouts/Header.vue";
 import Foote from "~/layouts/Footer.vue";
 import Breadcrumb from "~/components/common/Breadcrumb.vue";
 
-useHead({
-  title: "About - Modern Portfolio Nuxt js Template",
+useSeoMeta({
+  title: "About | Bilal Ahmed Mirza",
+  ogTitle: "About | Bilal Ahmed Mirza",
+  description: "Learn more about Bilal Ahmed Mirza, a Creative Lead and Operations Manager with a passion for UI/UX and automation.",
+  ogDescription: "Creative Lead & Operations Manager specializing in high-impact digital experiences.",
 });
  
 </script>

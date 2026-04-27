@@ -1,5 +1,5 @@
 <script setup>
-import { MessageSquare, ArrowUpRight } from 'lucide-vue-next';
+import { Download, ArrowUpRight } from 'lucide-vue-next';
 const { openWindow } = useIllustratorWindow();
 </script>
 
@@ -18,16 +18,16 @@ const { openWindow } = useIllustratorWindow();
             <!-- Content Row -->
             <div class="row hero-bottom-row justify-content-center m-0">
                 <div class="col-lg-12 d-flex flex-column flex-lg-row align-items-center justify-content-between p-0 px-4 px-lg-5">
-                    <!-- Left: Get In Touch button -->
+                    <!-- Left: Download Resume button -->
                     <div class="hero-side-column left">
                         <div class="hero-content wow fadeInUp delay-0-2s">
-                            <p class="hero-side-label">Connect</p>
-                            <NuxtLink class="portfolio-btn" to="/#contact">
-                                <span class="portfolio-btn-text">Get In<br>Touch</span>
+                            <p class="hero-side-label">Resume</p>
+                            <a class="portfolio-btn" href="/resume-bilal-ahmed.pdf" target="_blank" download>
+                                <span class="portfolio-btn-text">Download<br>Resume</span>
                                 <span class="portfolio-btn-arrow">
-                                    <MessageSquare :size="24" color="currentColor" :stroke-width="2.5" />
+                                    <Download :size="24" color="currentColor" :stroke-width="2.5" />
                                 </span>
-                            </NuxtLink>
+                            </a>
                         </div>
                     </div>
 

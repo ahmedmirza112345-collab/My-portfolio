@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import { MapPin, Phone, Mail, Linkedin, Palette, CheckCircle2 } from 'lucide-vue-next';
+import { MapPin, Phone, Mail, Linkedin, Palette, CheckCircle2, Github } from 'lucide-vue-next';
 
 const name = ref('');
 const email = ref('');
@@ -76,8 +76,9 @@ const closePopup = () => {
               <h2>Socials</h2>
               <div class="about-social">
                 <ul>
-                  <li><a target='_blank' href="https://www.behance.net/bilalahmed311"><Palette :size="20" /></a></li>
-                  <li><a target='_blank' href="https://linkedin.com"><Linkedin :size="20" /></a></li>
+                  <li><a target='_blank' href="https://www.behance.net/bilalahmed311" title="Behance"><Palette :size="20" /></a></li>
+                  <li><a target='_blank' href="https://www.linkedin.com/in/mirzabilalahmed/" title="LinkedIn"><Linkedin :size="20" /></a></li>
+                  <li><a target='_blank' href="https://github.com/ahmedmirza112345" title="GitHub"><Github :size="20" /></a></li>
                 </ul>
               </div>
             </div>

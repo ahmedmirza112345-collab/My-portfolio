@@ -1,1 +1,4 @@
+User-agent: *
+Allow: /
 
+Sitemap: https://mirza-bilal-portfolio.netlify.app/sitemap.xml

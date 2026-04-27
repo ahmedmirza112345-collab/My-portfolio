@@ -14,14 +14,23 @@ onMounted(async () => {
 });
 
 onMounted(() => {
-  $ScrollSmoother.create({
-    wrapper : '#smooth-wrapper',
-    content : '#smooth-content',
-    smooth: 2,
-    effects: true   
-  })
-  
-})
+  let mm = gsap.matchMedia();
+
+  mm.add("(min-width: 992px)", () => {
+    $ScrollSmoother.create({
+      wrapper: '#smooth-wrapper',
+      content: '#smooth-content',
+      smooth: 2,
+      effects: true
+    });
+  });
+
+  mm.add("(max-width: 991px)", () => {
+    // Disable smooth scrolling on mobile for better performance
+    // and to avoid layout shifts/lag on low-end devices
+    gsap.set("#smooth-content", { clearProps: "all" });
+  });
+});
 
 
 
@@ -29,8 +38,13 @@ import Header from "~/layouts/Header.vue";
 import Footer from "~/layouts/Footer.vue";
 import portfolio_data from "~/data/portfolio_data";
 
-useHead({
-  title: "Modern Portfolio Nuxt js Template",
+useSeoMeta({
+  title: "Bilal Ahmed Mirza | Full-Stack Creative Lead",
+  ogTitle: "Bilal Ahmed Mirza | Full-Stack Creative Lead",
+  description: "Portfolio of Bilal Ahmed Mirza. High-conversion Full-Stack Creative Lead specializing in UI/UX, WordPress, Automation, and Digital Branding.",
+  ogDescription: "Creative Lead & Operations Manager specializing in high-impact digital experiences.",
+  ogImage: "https://mirza-bilal-portfolio.netlify.app/assets/images/about/me.jpg",
+  twitterCard: "summary_large_image",
 });
 
 
@@ -55,6 +69,7 @@ function handleImagePopup(index) {
           <AboutResumeArea />
           <AboutSkillArea />
           <HomeServiceArea />
+          <HomeTestimonialArea />
           <HomePortfolioCTA />
           <HomeContactArea />
         </main>
