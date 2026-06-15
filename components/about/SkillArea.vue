@@ -16,7 +16,7 @@
                 
                 <!-- Creative Suite -->
                 <div class="col-12 mt-20 mb-20">
-                  <h4 class="skill-category-title wow fadeInUp">Creative Suite (Adobe & Design)</h4>
+                  <h4 class="skill-category-title skill-title-black wow fadeInUp">Creative Suite (Adobe & Design)</h4>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                   <div class="skill-item wow fadeInUp delay-0-2s">
@@ -45,7 +45,7 @@
 
                 <!-- Frontend & CMS -->
                 <div class="col-12 mt-40 mb-20">
-                  <h4 class="skill-category-title wow fadeInUp">Frontend & CMS</h4>
+                  <h4 class="skill-category-title skill-title-black wow fadeInUp">Frontend & CMS</h4>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                   <div class="skill-item wow fadeInUp delay-0-2s">
@@ -68,11 +68,11 @@
 
                 <!-- Operations & Automation -->
                 <div class="col-12 mt-40 mb-20">
-                  <h4 class="skill-category-title wow fadeInUp">Operations & Automation</h4>
+                  <h4 class="skill-category-title skill-title-black wow fadeInUp">Operations & Automation</h4>
                 </div>
                 <div class="col-xl-3 col-lg-4 col-md-3 col-sm-4 col-6">
                   <div class="skill-item wow fadeInUp delay-0-2s">
-                    <img src="https://www.google.com/s2/favicons?domain=gohighlevel.com&sz=128" alt="GoHighLevel" class="official-icon" style="border-radius: 12px;" />
+                    <img src="https://www.google.com/s2/favicons?domain=gohighlevel.com&sz=128" alt="GoHighLevel" class="official-icon ghl-icon" />
                     <h5>GoHighLevel</h5>
                   </div>
                 </div>
@@ -116,5 +116,13 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   padding-bottom: 10px;
   width: 100%;
+}
+
+.skill-title-black {
+  color: #000000 !important;
+}
+
+.ghl-icon {
+  border-radius: 12px;
 }
 </style>

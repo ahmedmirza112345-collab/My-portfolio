@@ -57,20 +57,26 @@ const closePopup = () => {
       <div class="row">
         <div class="col-lg-4">
           <div class="contact-content-part wow fadeInUp delay-0-2s">
-            <div class="single-contact wow fadeInUp" data-wow-delay=".2s">
-              <span class="circle-btn"><MapPin :size="20" /></span>
-              <h2>Location:</h2>
-              <p>Gujrat, Pakistan</p>
+            <div class="single-contact has-icon wow fadeInUp" data-wow-delay=".2s">
+              <span class="circle-btn"><MapPin :size="24" /></span>
+              <div class="contact-info">
+                <h2>Location:</h2>
+                <p>Gujrat, Pakistan</p>
+              </div>
             </div>
-            <div class="single-contact wow fadeInUp" data-wow-delay=".4s">
-              <span class="circle-btn"><Phone :size="20" /></span>
-              <h2>Phone:</h2>
-              <p>0343-0584737</p>
+            <div class="single-contact has-icon wow fadeInUp" data-wow-delay=".4s">
+              <span class="circle-btn"><Phone :size="24" /></span>
+              <div class="contact-info">
+                <h2>Phone:</h2>
+                <p>0343-0584737</p>
+              </div>
             </div>
-            <div class="single-contact wow fadeInUp" data-wow-delay=".6s">
-              <span class="circle-btn"><Mail :size="20" /></span>
-              <h2>Email:</h2>
-              <p>mirzabilalahmed11@gmail.com</p>
+            <div class="single-contact has-icon wow fadeInUp" data-wow-delay=".6s">
+              <span class="circle-btn"><Mail :size="24" /></span>
+              <div class="contact-info">
+                <h2>Email:</h2>
+                <p>mirzabilalahmed11@gmail.com</p>
+              </div>
             </div>
             <div class="single-contact wow fadeInUp" data-wow-delay=".6s">
               <h2>Socials</h2>
@@ -235,9 +241,17 @@ const closePopup = () => {
   transform: translateY(-5px);
 }
 
+.single-contact.has-icon {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
 .circle-btn {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #070707; /* Dark color for icons */
+  margin-top: 15px; /* Align with h2 top margin */
 }
 </style>

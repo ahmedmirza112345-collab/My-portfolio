@@ -19,3 +19,14 @@
     <NuxtPage />
   </div>
 </template>
+
+<style>
+/* Hide scrollbars completely to remove the scrolling line artifact */
+::-webkit-scrollbar {
+  display: none;
+}
+html {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+</style>

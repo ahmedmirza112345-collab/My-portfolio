@@ -69,7 +69,6 @@ function handleImagePopup(index) {
           <AboutResumeArea />
           <AboutSkillArea />
           <HomeServiceArea />
-          <HomeTestimonialArea />
           <HomePortfolioCTA />
           <HomeContactArea />
         </main>

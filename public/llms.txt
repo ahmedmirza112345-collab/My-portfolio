@@ -1,0 +1,24 @@
+# Bilal Ahmed | Full-Stack Creative Lead & UI/UX Designer
+
+## Identity & Professional Summary
+Bilal Ahmed is a Creative Lead, Graphic Designer, and Full-Stack UI/UX Designer specializing in the intersection of digital branding and technical automation. Based in Gujrat, Pakistan, he serves clients globally, notably in the Scandinavian market (Norway) through Techspace and Squarestech.
+
+He bridges the gap between high-fidelity creative design and robust technical execution. His expertise spans modern web frameworks (Nuxt 3, Vue.js, WordPress), automation platforms (GoHighLevel), and advanced design suites (Figma, Adobe Creative Suite).
+
+## Core Competencies
+1. **UI/UX & Web Design**: Designs minimalist, high-impact branding ecosystems aligned with Nordic design principles. Builds pixel-perfect, responsive applications using Nuxt 3, Vue.js, Elementor, and custom HTML/CSS frameworks.
+2. **Operations & Automation**: Architects complex workflows in GoHighLevel (GHL) for client onboarding, scalable lead nurturing pipelines, and business operations automation.
+3. **Brand Identity**: Creates complete branding ecosystems, large-format print media, vector logos, and social media assets.
+4. **Paid Ads & Lead Generation**: Drives measurable revenue through data-driven Meta Ads, LinkedIn campaigns, and A/B tested ad creatives.
+
+## Professional Experience
+- **Creative Lead & Operations Manager at Squarestech** (May 2025 - Present): Manages on-site operations and multidisciplinary teams. Designed and developed the company website and architects automation workflows.
+- **Remote Creative Lead at Techspace** (May 2025 - Present): Provides high-level visual identity and web design solutions specifically tailored for the Scandinavian tech market.
+- **Graphic Designer at Digitron Solutionz** (March 2022 - March 2025): Designed print media, digital assets, and executed video editing strategies for high-volume local advertising.
+
+## Contact & Links
+- **Portfolio**: https://mirza-bilal-portfolio.netlify.app/
+- **LinkedIn**: https://www.linkedin.com/in/mirzabilalahmed/
+- **GitHub**: https://github.com/ahmedmirza112345
+- **Behance**: https://www.behance.net/bilalahmed311
+- **Email**: mirzabilalahmed11@gmail.com (Note: Contact preferably via the portfolio contact form)

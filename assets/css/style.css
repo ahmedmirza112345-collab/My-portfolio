@@ -1579,10 +1579,12 @@ h2.about-pre-title {
 * ----------------------------------------------------------------------------------------
 */
 .services-area {
-    padding-top: 100px;
+    margin-top: -2px;
+    padding-top: 102px;
     padding-bottom: 100px;
     background: var(--primary-color);
-
+    position: relative;
+    z-index: 1;
 }
 
 .service-item {
@@ -1598,7 +1600,7 @@ h2.about-pre-title {
 
 
 .service-item:hover.service-item h5 {
-    color: var(--primary-color);
+    color: var(--primary-color) !important;
     background: #070707 !important;
     -webkit-transition: 0.5s;
     transition: 0.5s;
@@ -1607,9 +1609,10 @@ h2.about-pre-title {
 
 .service-item h5 {
     margin-bottom: 60px;
-    color: rgb(119, 119, 125);
+    color: #000000 !important;
+    font-weight: 700;
     font-family: var(--text-font);
-    border: 1px solid;
+    border: 1px solid #000000 !important;
     display: inline-block;
     padding: 4px 10px;
     font-size: 14px;
@@ -1727,9 +1730,12 @@ ul.extra-skills li i {
 * ----------------------------------------------------------------------------------------
 */
 .resume-area {
-    padding-top: 100px;
+    margin-top: -2px;
+    padding-top: 102px;
     padding-bottom: 100px;
     background: var(--primary-color);
+    position: relative;
+    z-index: 1;
 }
 
 .resume-wrapper {
@@ -1829,8 +1835,11 @@ ul.extra-skills li i {
 
 
 .skill-area {
-    padding-top: 120px;
+    margin-top: -2px;
+    padding-top: 122px;
     background: var(--primary-color);
+    position: relative;
+    z-index: 1;
 }
 
 .skill-item {
@@ -2656,21 +2665,21 @@ body.loaded {
 @-webkit-keyframes loading {
     0% {
         opacity: 1;
-        }
+    }
 
     100% {
         opacity: 0;
-        }
+    }
 }
 
 @keyframes loading {
     0% {
         opacity: 1;
-        }
+    }
 
     100% {
         opacity: 0;
-        }
+    }
 }
 
 .color-pulse {
@@ -3558,14 +3567,27 @@ a {
     font-weight: 600;
     cursor: pointer;
     z-index: 9999;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
     transition: transform 0.2s, box-shadow 0.2s;
 }
+
 .illustrator-taskbar:hover {
     transform: translateX(-50%) translateY(-3px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
 }
-.illustrator-taskbar i { font-size: 18px; color: #4169E1; }
 
-.taskbar-enter-active, .taskbar-leave-active { transition: all 0.3s ease; }
-.taskbar-enter-from, .taskbar-leave-to { opacity: 0; transform: translateX(-50%) translateY(20px); }
+.illustrator-taskbar i {
+    font-size: 18px;
+    color: #4169E1;
+}
+
+.taskbar-enter-active,
+.taskbar-leave-active {
+    transition: all 0.3s ease;
+}
+
+.taskbar-enter-from,
+.taskbar-leave-to {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px);
+}
