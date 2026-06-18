@@ -1,6 +1,5 @@
 <script setup>
 import { Download, ArrowUpRight } from 'lucide-vue-next';
-const { openWindow } = useIllustratorWindow();
 </script>
 
 <template>
@@ -42,12 +41,12 @@ const { openWindow } = useIllustratorWindow();
                     <div class="hero-side-column right">
                         <div class="hero-content wow fadeInUp delay-0-4s">
                             <p class="hero-side-label">Selected Work</p>
-                            <button class="portfolio-btn" @click="openWindow">
+                            <a href="https://www.behance.net/bilalahmed311" target="_blank" class="portfolio-btn">
                                 <span class="portfolio-btn-text">View<br>Portfolio</span>
                                 <span class="portfolio-btn-arrow">
                                     <ArrowUpRight :size="24" color="currentColor" :stroke-width="2.5" />
                                 </span>
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>

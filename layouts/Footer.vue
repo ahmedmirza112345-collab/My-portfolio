@@ -22,7 +22,7 @@ import { Linkedin, Github, Palette, Mail } from 'lucide-vue-next';
             </div>
             <div class="row">
                 <div class="col-lg-6 col-sm-6">
-                    <p class="copy-left-text">Template by <a href="https://themeforest.net/user/rk_theme/portfolio">Creative Personal®</a></p>
+                    <p class="copy-left-text signature-font">Bilal Ahmed Mirza</p>
                 </div>
                 <div class="col-lg-6 col-sm-6">
                     <p class="copy-right-text">© Copyright {{ new Date().getFullYear() }}</p>
@@ -33,6 +33,15 @@ import { Linkedin, Github, Palette, Mail } from 'lucide-vue-next';
 </template>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+
+.signature-font {
+    font-family: 'Alex Brush', cursive;
+    font-size: 34px;
+    color: #4169E1; /* Giving it the brand color so it stands out beautifully */
+    margin-bottom: 0;
+}
+
 .footer-social {
     display: flex;
     justify-content: center;

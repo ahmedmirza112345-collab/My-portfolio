@@ -1,16 +1,5 @@
 <script setup>
-import { ArrowRight, Layout, Monitor, MousePointer2 } from 'lucide-vue-next';
-
-const { openWindow } = useIllustratorWindow();
-
-const handleCTAClick = () => {
-    // We can either open the window on home or navigate to the dedicated page
-    // Since we're on the homepage, opening the window is a great interactive experience
-    openWindow();
-    
-    // Smooth scroll to top to see the window better if needed, 
-    // but the window is fixed so it's always visible.
-};
+import { Layout, Monitor, MousePointer2 } from 'lucide-vue-next';
 </script>
 
 <template>
@@ -30,16 +19,12 @@ const handleCTAClick = () => {
                     </p>
                     
                     <div class="cta-actions">
-                        <button @click="handleCTAClick" class="cta-primary-btn">
-                            <span class="btn-text">Open Studio</span>
+                        <a href="https://www.behance.net/bilalahmed311" target="_blank" class="cta-primary-btn">
+                            <span class="btn-text">View Portfolio</span>
                             <span class="btn-icon">
                                 <Layout :size="20" />
                             </span>
-                        </button>
-                        
-                        <NuxtLink to="/illustrator-portfolio" class="cta-secondary-link">
-                            View Full Screen <ArrowRight :size="16" />
-                        </NuxtLink>
+                        </a>
                     </div>
                 </div>
                 

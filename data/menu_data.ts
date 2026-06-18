@@ -17,35 +17,6 @@ const menu_data: DataType[] = [
         link: "/",
         has_dropdown: false,
     },
-    {
-        id: 2,
-        title: "About",
-        link: "/#about",
-        has_dropdown: false,
-    },
-    {
-        id: 3,
-        title: "Services",
-        link: "/#services",
-        has_dropdown: false,
-    },
-    {
-        id: 4,
-        title: "Portfolio",
-        link: "/illustrator-portfolio", // Links to the actual portfolio page
-        has_dropdown: false,
-    },
-    {
-        id: 5,
-        title: "Blog",
-        link: "/blog",
-        has_dropdown: false,
-    },
-    {
-        id: 6,
-        title: "Contact",
-        link: "/#contact",
-        has_dropdown: false,
-    },
+
 ];
 export default menu_data;
